@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" ng-app="rmip">
+<head>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+	 
+  <script src="lib/html5shiv.js"></script>
+  <script src="lib/respond.min.js"></script>
+  
+  <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="lib/angular/angular-route.js "></script>
+  <script src="lib/angular/angular-sanitize.js "></script>
+  <script src="js/app.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/MainMenuCtrl.js"></script>
+  <script src="js/BookMarkCtrl.js"></script>
+
+  	 <!--[if lte IE 8]>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]-->
+</head>
+<body>
+ <div class="container-fluid" style="padding-left:0px;padding-right:0px;">
+	 <div class="row" ng-controller="MainMenuCtrl">
+		<div class="col-md-1"  style="padding-right:0px !important" >
+			<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
+				<div class="container-fluid">
+				  <div class="container-fluid">
+				  <div class="navbar-header">
+					<a class="navbar-brand" href="#">RMIP</a>
+				  </div>
+				  </div><!--/.nav-collapse -->
+				</div>
+			 </div>
+		</div>
+		<div class="col-md-11" style="padding-left:0px !important;padding-right:0px !important" >
+			<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
+				<div class="container-fluid">
+				  <div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+					  <span class="sr-only">Toggle navigation</span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand"  href="javascript:void(0)" ng-click="showBookMarks()" >Bookmarks</a>
+				  </div>
+				  <div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+					  <li class="active"><a href="#">Home</a></li>
+					  <li><a href="#about">About</a></li>
+					  <li><a href="#contact">Contact</a></li>
+					  <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+						  <li><a href="#">Action</a></li>
+						  <li><a href="#">Another action</a></li>
+						  <li><a href="#">Something else here</a></li>
+						  <li class="divider"></li>
+						  <li class="dropdown-header">Nav header</li>
+						  <li><a href="#">Separated link</a></li>
+						  <li><a href="#">One more separated link</a></li>
+						</ul>
+					  </li>
+					</ul>
+				  </div><!--/.nav-collapse -->
+				</div>
+			 </div>
+		</div>
+	 </div>
+	 <div class="row row-offcanvas row-offcanvas-left"  >
+        <!-- sidebar -->
+        <div class="col-md-1 sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
+            <ul class="nav navbar-inverse" style="min-height:750px !important;">
+              <li><a href=""  data-target="#sub1">High Level Cat 1</a>
+                <ul class="nav collapse" id="sub1">
+                  <li><a href="#">item 1</a></li>
+                  <li><a href="#">item 2</a></li>
+                  <li><a href="#">item 3</a></li>
+                </ul>
+              </li>
+			  <li><a href=""  data-target="#sub2">High Level Cat 2</a>
+                <ul class="nav collapse" id="sub2">
+                  <li><a href="#">item 1</a></li>
+                  <li><a href="#">item 2</a></li>
+                  <li><a href="#">item 3</a></li>
+                </ul>
+              </li>
+			  <li><a href=""  data-target="#sub3">High Level Cat 3</a>
+                <ul class="nav collapse" id="sub3">
+                  <li><a href="#">item 1</a></li>
+                  <li><a href="#">item 2</a></li>
+                  <li><a href="#">item 3</a></li>
+                </ul>
+              </li>
+			  <li><a href=""  data-target="#sub4">High Level Cat43</a>
+                <ul class="nav collapse" id="sub4">
+                  <li><a href="#">item 1</a></li>
+                  <li><a href="#">item 2</a></li>
+                  <li><a href="#">item 3</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+        <!-- main area -->
+        <div class="col-md-11 ">
+			<div class="row" ng-controller="BookMarkCtrl" id="divBookMarkPage" style="position:absolute !important;width:100% !important; z-index:99999;background-color:#fff!important" >
+				<div class="modal fade" id="test" >
+				  <div class="modal-dialog">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">Edit Link</h4>
+					  </div>
+					  <div class="modal-body">
+						<form role="form">
+						  <div class="form-group">
+							<label for="exampleInputEmail1">Label</label>
+							<input type="text" class="form-control" placeholder="Label" ng-model="data.linkEditDetls.name" >
+						  </div>
+						  <div class="form-group">
+							<label for="exampleInputPassword1">URL</label>
+							<input type="text" class="form-control" placeholder="URL" ng-model="data.linkEditDetls.url" >
+						  </div>
+						</form>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary"  ng-click="saveLink()" >Save changes</button>
+					  </div>
+					</div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				<div class="col-md-3" ng-repeat="bookmarkGrp in data.bookmarkItems" >
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+							<div class="row" >
+								<div class="col-md-4" >
+									<h3 class="panel-title" ng-show="!bookmarkGrp.edit" ng-click="editGroupName($index,true)" >{{bookmarkGrp.BmGroupName}}</h3>
+									<input type="text"  class="form-control" ng-model="bookmarkGrp.BmGroupName" ng-show="bookmarkGrp.edit" ng-blur="editGroupName($index,false)"  ng-mouseout="editGroupName($index,false)" >
+								</div>
+								<div class="col-md-offset-2 col-md-2" >
+									<button type="button" class="btn btn-xs btn-default" ng-click="addLink($index)">Add Link</button>
+								</div>
+								<div class="col-md-2" >
+									<button ng-show="bookmarkGrp.remove" type="button" class="btn btn-xs btn-default" ng-click="deleteGroup($index)" >Delete Group</button>
+									<button ng-show="bookmarkGrp.confirm" type="button" class="btn btn-xs btn-danger" ng-click="deleteGroup($index)" >Confirm</button>
+								</div>
+							</div>
+					  </div>
+					  <div class="panel-body">
+						<ul class="list-group">
+						  <li ng-repeat="bookmarkGrpItem in bookmarkGrp.grpItems"  class="list-group-item list-group-item-success" style="cursor: pointer !important" >
+							<div class="row" >
+								<div class="col-md-7" >
+									<label style="cursor: pointer !important" ng-click="openURL(bookmarkGrpItem.url)" >{{bookmarkGrpItem.name}}</label>
+								</div>
+								<div class="col-md-3" >
+									<button ng-show="bookmarkGrpItem.remove" type="button" class="btn btn-xs btn-default" ng-click="deleteLink($parent.$index,$index)" >Delete Link</button>
+									<button ng-show="bookmarkGrpItem.confirm" type="button" class="btn btn-xs btn-danger" ng-click="deleteLink($parent.$index,$index)" >Confirm</button>
+								</div>
+								<div class="col-md-1" >
+									<button ng-show="bookmarkGrpItem.remove" type="button" class="btn btn-xs btn-default" ng-click="editLink($parent.$index,$index)" >Edit</button>
+								</div>
+							</div>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-3" ng-show="data.bookmarkItems.length<4"  >
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+							<div class="row" >
+								<div class="col-md-12" >
+									<h3 class="panel-title" >Add New Group Here</h3>
+								</div>
+							</div>
+					  </div>
+					  <div class="panel-body text-center" >
+							<button type="button" class="btn btn-lg btn-success" ng-click="addGroup()" >Click here to add new group</button>
+					  </div>
+					</div>
+				</div>
+						
+			</div>
+			<div class="row" >
+				<div class="col-md-12" >
+					<div ng-view></div>
+				</div>
+			</div>
+        </div><!-- /.col-xs-12 main -->
+    </div><!--/.row-->
+ </div>
+</body>
+</html>
