@@ -61,25 +61,24 @@
 					  <span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand"  href="javascript:void(0)" ng-click="showBookMarks()" >Bookmarks</a>
+					<a class="navbar-brand"  href="javascript:void(0)" ><strong>Risk Management Portal</strong></a>
 				  </div>
 				  <div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-					  <li class="active"><a href="#">Home</a></li>
-					  <li><a href="#about">About</a></li>
-					  <li><a href="#contact">Contact</a></li>
+					<ul class="nav navbar-nav navbar-right">
 					  <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ravi Teja<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-						  <li><a href="#">Action</a></li>
-						  <li><a href="#">Another action</a></li>
-						  <li><a href="#">Something else here</a></li>
-						  <li class="divider"></li>
-						  <li class="dropdown-header">Nav header</li>
-						  <li><a href="#">Separated link</a></li>
-						  <li><a href="#">One more separated link</a></li>
+						  <li><a href="#">News and communication</a></li>
+						  <li><a href="#">Portal Reports</a></li>
 						</ul>
 					  </li>
 					</ul>
+					<form class="navbar-form navbar-right" role="search">
+						<div class="form-group">
+						  <input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-default">Search</button>
+					  </form>
 				  </div><!--/.nav-collapse -->
 				</div>
 			 </div>
@@ -88,9 +87,9 @@
 	 <div class="row row-offcanvas row-offcanvas-left"  >
         <!-- sidebar -->
         <div class="col-md-1 sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
-            <ul class="nav navbar-inverse" style="min-height:750px !important;">
+            <ul class="nav navbar-inverse" style="min-height:750px !important;" >
               <li><a href=""  data-target="#sub1">High Level Cat 1</a>
-                <ul class="nav collapse" id="sub1">
+                <ul class="nav collapse" id="sub1" >
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
@@ -117,11 +116,18 @@
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
+			  <li style="margin-top:150px;" >
+				<a href=""  data-target="#sub4"><strong>Customer Support</strong></a>
+              </li>
+			  <li>
+				<a href=""  data-target="#sub4"><strong>Feedback</strong></a>
+              </li>
             </ul>
+			
         </div>
         <!-- main area -->
         <div class="col-md-11 ">
-			<div class="row" ng-controller="BookMarkCtrl" id="divBookMarkPage" style="position:absolute !important;width:100% !important; z-index:99999;background-color:#fff!important" >
+			<div class="row" ng-controller="BookMarkCtrl" id="divBookMarkPage" style="position:absolute !important;width:100% !important; z-index:999;background-color:#fff!important" >
 				<div class="modal fade" id="test" >
 				  <div class="modal-dialog">
 					<div class="modal-content">
@@ -201,6 +207,11 @@
 				</div>
 						
 			</div>
+			<div class="row"  >
+				<div class="alert alert-warning" role="alert">
+					<marquee><strong>News1 :</strong> News/Updates will come here</marquee>
+				</div>
+			</div><!--/.row-->
 			<div class="row" >
 				<div class="col-md-12" >
 					<div ng-view></div>
