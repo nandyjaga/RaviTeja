@@ -21,6 +21,7 @@
   <script src="js/app.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/MainMenuCtrl.js"></script>
+  <script src="js/SideMenuCtrl.js"></script>
   <script src="js/BookMarkCtrl.js"></script>
 
   	 <!--[if lte IE 8]>
@@ -84,33 +85,33 @@
 			 </div>
 		</div>
 	 </div>
-	 <div class="row row-offcanvas row-offcanvas-left"  >
+	 <div class="row row-offcanvas row-offcanvas-left"   ng-controller="SideMenuCtrl" >
         <!-- sidebar -->
         <div class="col-md-1 sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
             <ul class="nav navbar-inverse" style="min-height:750px !important;" >
-              <li><a href=""  data-target="#sub1">High Level Cat 1</a>
-                <ul class="nav collapse" id="sub1" >
+              <li><a href=""  data-target="#sub1" class="cls_highLevel"  >High Level Cat 1</a>
+                <ul class="nav cls_childItems " id="sub1" >
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
-			  <li><a href=""  data-target="#sub2">High Level Cat 2</a>
-                <ul class="nav collapse" id="sub2">
+			  <li><a href=""  data-target="#sub2" class="cls_highLevel" >High Level Cat 2</a>
+                <ul class="nav cls_childItems" id="sub2">
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
-			  <li><a href=""  data-target="#sub3">High Level Cat 3</a>
-                <ul class="nav collapse" id="sub3">
+			  <li><a href=""  data-target="#sub3" class="cls_highLevel" >High Level Cat 3</a>
+                <ul class="nav cls_childItems" id="sub3">
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
-			  <li><a href=""  data-target="#sub4">High Level Cat43</a>
-                <ul class="nav collapse" id="sub4">
+			  <li><a href=""  data-target="#sub4" class="cls_highLevel" >High Level Cat43</a>
+                <ul class="nav cls_childItems" id="sub4">
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
