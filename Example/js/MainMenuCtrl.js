@@ -9,6 +9,7 @@ rmipControllers.controller('MainMenuCtrl', ['$scope', '$http','$rootScope',
 	}
 	$("#GblSearchBtn").on("click",function(){
 		$("#recentlyViewed").hide();
+		$("#highLevelMenyDB").hide();
 		$("#searchAll").show();
 		$("#searchMenu").show();
 		$(".cls_all").show();
