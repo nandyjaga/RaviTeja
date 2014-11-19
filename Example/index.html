@@ -89,28 +89,28 @@
         <!-- sidebar -->
         <div class="col-md-1 sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
             <ul class="nav navbar-inverse" style="min-height:750px !important;" >
-              <li><a href=""  data-target="#sub1" class="cls_highLevel glyphicon glyphicon-file"  >Level C1</a>
+              <li><a href=""  data-target="#sub1" class="cls_highLevel "  > High Lvl Cat 1</a>
                 <ul class="nav cls_childItems " id="sub1" >
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
-			  <li><a href=""  data-target="#sub2" class="cls_highLevel glyphicon glyphicon-file"  >Level C2</a>
+			  <li><a href=""  data-target="#sub2" class="cls_highLevel"  > High Lvl Cat 2</a>
                 <ul class="nav cls_childItems" id="sub2">
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
-			  <li><a href=""  data-target="#sub3" class="cls_highLevel glyphicon glyphicon-file"  >Level C3</a>
+			  <li><a href=""  data-target="#sub3" class="cls_highLevel"  > High Lvl Cat 3</a>
                 <ul class="nav cls_childItems" id="sub3">
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
                   <li><a href="#">item 3</a></li>
                 </ul>
               </li>
-			  <li><a href=""  data-target="#sub4" class="cls_highLevel glyphicon glyphicon-file"  >Level C4</a>
+			  <li><a href=""  data-target="#sub4" class="cls_highLevel "  > High Lvl Cat 4</a>
                 <ul class="nav cls_childItems" id="sub4">
                   <li><a href="#">item 1</a></li>
                   <li><a href="#">item 2</a></li>
@@ -218,11 +218,11 @@
 				<div class="col-md-12 ">
 					<!-- Tabs -->
 					<ul class="nav nav-tabs" id="tabs">
-						<li class="active" ><a href="#highLevelCat1" data-toggle="tab">High Level Category 1</a></li>
-						<li class="" ><a href="#highLevelCat2" data-toggle="tab">High Level Category 2</a></li>
-						<li class="" ><a href="#highLevelCat3" data-toggle="tab">High Level Category 3</a></li>
-						<li class="" ><a href="#highLevelCat4" data-toggle="tab">High Level Category 4</a></li>
-						<li class="" ><a href="#highLevelCat5" data-toggle="tab">High Level Category 5</a></li>
+						<li class="active" ><a href="#highLevelCat1" data-toggle="tab"><span class="glyphicon glyphicon-file" ></span>High Level Category 1</a></li>
+						<li class="" ><a href="#highLevelCat2" data-toggle="tab"><span class="glyphicon glyphicon-file" ></span> High Level Category 2</a></li>
+						<li class="" ><a href="#highLevelCat3" data-toggle="tab"><span class="glyphicon glyphicon-file" ></span>High Level Category 3</a></li>
+						<li class="" ><a href="#highLevelCat4" data-toggle="tab"><span class="glyphicon glyphicon-file" ></span>High Level Category 4</a></li>
+						<li class="" ><a href="#highLevelCat5" data-toggle="tab"><span class="glyphicon glyphicon-file" ></span>High Level Category 5</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="highLevelCat1">
@@ -256,60 +256,52 @@
 						  <!-- Table -->
 						  <div class="row" >
 							<div class="col-md-6" >
-								<table class="table">
-									<thead>
-									  <tr>
-										<th width="10%" >Type</th>
-										<th width="10%" >Source</th>
-										<th width="80%" >Title</th>
-									  </tr>
-									</thead>
-									<tbody>
-									  <tr>
-										<td>Mark</td>
-										<td>@mdo</td>
-										<td><button type="button" class="btn btn-link">Otto asdasda asdsada </button></td>
-									  </tr>
-									  <tr>
-										<td>Jacob</td>
-										<td>@fat</td>
-										<td><button type="button" class="btn btn-link"> Thornton asdasdas asaskj</button></td>
-									  </tr>
-									  <tr>
-										<td>Larry</td>
-										<td>@twitter</td>
-										<td><button type="button" class="btn btn-link"> the Bird sdjfsdffds</button></td>
-									  </tr>
-									</tbody>
-								  </table>
+								<div class="list-group">
+								  <a href="#" class="list-group-item ">
+									<span class="label label-info">Report</span>
+									<span class="glyphicon glyphicon-star"></span>
+									<button class="btn btn-link btn-group-lg" >Risk analysis report</button>
+								  </a>
+								  <a href="#" class="list-group-item ">
+									<span class="label label-primary">Sharepoint</span>
+									<span class="glyphicon glyphicon-star-empty"></span>
+									<button class="btn btn-link btn-group-lg" >Admin access request</button>
+								  </a>
+								  <a href="#" class="list-group-item ">
+									<span class="label label-warning">Dashboard</span>
+									<span class="glyphicon glyphicon-star"></span>
+									<button class="btn btn-link btn-group-lg" >Daily Analysis report</button>
+								  </a>
+								  <a href="#" class="list-group-item ">
+									<span class="label label-info">Report</span>
+									<span class="glyphicon glyphicon-star"></span>
+									<button class="btn btn-link btn-group-lg" >Data analytics</button>
+								  </a>
+								</div>
 							</div>
 							<div class="col-md-6" >
-								<table class="table">
-									<thead>
-									  <tr>
-										<th width="10%" >Type</th>
-										<th width="10%" >Source</th>
-										<th width="80%" >Title asasd dsaasd</th>
-									  </tr>
-									</thead>
-									<tbody>
-									  <tr>
-										<td>Mark</td>
-										<td>@mdo</td>
-										<td><button type="button" class="btn btn-link">Otto asasdas sadasd</button></td>
-									  </tr>
-									  <tr>
-										<td>Jacob</td>
-										<td>@fat</td>
-										<td><button type="button" class="btn btn-link"> Thornton</button></td>
-									  </tr>
-									  <tr>
-										<td>Larry</td>
-										<td>@twitter</td>
-										<td><button type="button" class="btn btn-link"> the Bird</button></td>
-									  </tr>
-									</tbody>
-								  </table>
+								<div class="list-group">
+								  <a href="#" class="list-group-item ">
+									<span class="label label-info">Report</span>
+									<span class="glyphicon glyphicon-star"></span>
+									<button class="btn btn-link btn-group-lg" >Risk analysis report</button>
+								  </a>
+								  <a href="#" class="list-group-item ">
+									<span class="label label-primary">Sharepoint</span>
+									<span class="glyphicon glyphicon-star-empty"></span>
+									<button class="btn btn-link btn-group-lg" >Admin access request</button>
+								  </a>
+								  <a href="#" class="list-group-item ">
+									<span class="label label-warning">Dashboard</span>
+									<span class="glyphicon glyphicon-star"></span>
+									<button class="btn btn-link btn-group-lg" >Daily Analysis report</button>
+								  </a>
+								  <a href="#" class="list-group-item ">
+									<span class="label label-info">Report</span>
+									<span class="glyphicon glyphicon-star"></span>
+									<button class="btn btn-link btn-group-lg" >Data analytics</button>
+								  </a>
+								</div>
 							</div>
 						  </div>
 					 </div>
