@@ -13,8 +13,15 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 			linkIdMax :2016,
 			GroupIdMax :1004
 		}
+		$scope.showBookMarkNew=function(){
+			$('#test1').modal('show');
+		}
 		
-		
+		$scope.createFolder=function(){
+			$('#test1').modal('hide');
+			$('#test2').modal('show');
+		}
+	
 		$.ajax({url:"data/bookmarks.json",
 			success:function(result){
 				for(var i=0;i<result.length;i++){
@@ -39,6 +46,7 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 					}
 					$scope.data.bookmarkItems.push(bookmarkgroup);
 				}
+				//setTimeout(function(){makeBookMarkMenu()},1000);
 			},
 			error:function(result){
 				//---------To do----------
@@ -96,8 +104,15 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 			$scope.data.bookmarkItems.push(bookmarkgroup);
 		}
 		
+		$scope.folderCreated=function(){
+			$('#test2').modal('hide');
+			$('#test1').modal('show');
+		}
+		
 		$scope.saveLink=function(){
-		    if($scope.data.linkEditDetls.id != null){
+		    $('#test1').modal('hide');
+			return;
+			if($scope.data.linkEditDetls.id != null){
 				$scope.data.bookmarkItems[$scope.data.linkEditDetls.parentIndex].grpItems[$scope.data.linkEditDetls.linkIndex].name=$scope.data.linkEditDetls.name;
 				$scope.data.bookmarkItems[$scope.data.linkEditDetls.parentIndex].grpItems[$scope.data.linkEditDetls.linkIndex].url=$scope.data.linkEditDetls.url;
 				$scope.data.linkEditDetls.parentIndex=null;
@@ -115,7 +130,7 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 				}
 				$scope.data.bookmarkItems[$scope.data.linkEditDetls.parentIndex].grpItems.push(linkItem);
 			}
-			$('#test').modal('hide');
+			
 		}
 		$scope.deleteLink=function(Parentindex,LinkIndex){
 			var linkItem = $scope.data.bookmarkItems[Parentindex].grpItems[LinkIndex];

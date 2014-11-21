@@ -17,6 +17,7 @@
   <script src="lib/respond.min.js"></script>
   
   <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+  <script src="lib/jquery/jquery-ui.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   
   <script src="lib/angular/angular.js"></script>
@@ -29,6 +30,7 @@
   <script src="js/MainMenuCtrl.js"></script>
   <script src="js/SideMenuCtrl.js"></script>
   <script src="js/BookMarkCtrl.js"></script>
+  <script src="js/chatController.js"></script>
 
   	 <!--[if lte IE 8]>
       <script>
@@ -45,32 +47,127 @@
 </head>
 <body>
  <div class="container-fluid" style="padding-left:0px;padding-right:0px;">
-	 <div class="row" ng-controller="MainMenuCtrl">
-		<div class="col-md-1"  style="padding-right:0px !important" >
+	 <div class="row" >
+		<div ng-controller="MainMenuCtrl"></div>
+		<div class="col-md-12 col-sm-12 " style="padding-left:0px !important;padding-right:0px !important" ng-controller="BookMarkCtrl" >
 			<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
 				<div class="container-fluid">
-				  <div class="container-fluid">
 				  <div class="navbar-header">
-					<a class="navbar-brand" href="#">RMIP</a>
+					<div class="modal fade" id="test1" >
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title">Add Bookmark</h4>
+						  </div>
+						  <div class="modal-body">
+							<form role="form">
+							  <div class="form-group">
+								<div class="row" >
+									<div class="col-md-3 col-sm-3 text-right" >
+										<label for="exampleInputEmail1">Name :</label>
+									</div>
+									<div class="col-md-9 col-sm-9" >
+										<input type="text" class="form-control" placeholder="Label" ng-model="data.linkEditDetls.name" >
+									</div>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<div class="row" >
+									<div class="col-md-3 col-sm-3 text-right" >
+										<label for="exampleInputPassword1">Create in :</label>
+									</div>
+									<div class="col-md-6 col-sm-6" >
+										<input type="text" class="form-control" placeholder="Label" ng-model="data.linkEditDetls.folder" >
+									</div>
+									<div class="col-md-3 col-sm-3" >
+										<button type="button" class="btn btn-primary block"  ng-click="createFolder()" >New Folder</button>
+									</div>
+								</div>
+							  </div>
+							</form>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-primary"  ng-click="saveLink()" >Add</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						  </div>
+						</div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				<div class="modal fade" id="test2" >
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title"New Folder</h4>
+						  </div>
+						  <div class="modal-body">
+							<form role="form">
+							  <div class="form-group">
+								<div class="row" >
+									<div class="col-md-3 col-sm-3 text-right" >
+										<label for="exampleInputEmail1">Folder Name :</label>
+									</div>
+									<div class="col-md-9 col-sm-9" >
+										<input type="text" class="form-control" placeholder="Label" ng-model="data.linkEditDetls.folder" >
+									</div>
+								</div>
+							  </div>
+							</form>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-primary"  ng-click="folderCreated(true)" >Create</button>
+							<button type="button" class="btn btn-default"  ng-click="folderCreated(false)"  data-dismiss="modal">Cancel</button>
+						  </div>
+						</div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
+					<div class="container-fluid">
+					  <div class="container-fluid">
+					  <div class="navbar-header">
+						<ul class="nav navbar-nav ">
+						  <li class="dropdown">
+							<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"  >Bookmarks<span class="caret"></span></a>
+							<ul class="dropdown-menu" >
+								<li ng-click="showBookMarkNew()" ><a >Add a bookmark</a></li>
+								<li>
+									<a class="trigger right-caret glyphicon glyphicon-folder-close">
+										Report ICRS
+									</a>
+									<ul class="dropdown-menu sub-menu">
+										<li><a href="#">Report 1</a></li>
+										<li><a href="#">Report 2</a></li>
+									</ul>
+								</li>
+								<li>
+									<a class="trigger right-caret glyphicon glyphicon-folder-close"> Contacts</a>
+									<ul class="dropdown-menu sub-menu">
+										<li><a href="#">Report 3</a></li>
+										<li><a href="#">Report 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">System risk analyst</a></li>
+							</ul>
+						  </li>
+						</ul>
+						<!--a class="navbar-brand"  href="javascript:void(0)" ng-click="showBookMarks()" >Bookmarks</a-->
+					  </div>
+					  </div><!--/.nav-collapse -->
+					</div>
+				 </div>
 				  </div>
-				  </div><!--/.nav-collapse -->
-				</div>
-			 </div>
-		</div>
-		<div class="col-md-11" style="padding-left:0px !important;padding-right:0px !important" >
-			<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
-				<div class="container-fluid">
-				  <div class="navbar-header">
+				  <div class="navbar-header" style="padding-left:53px;">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 					  <span class="sr-only">Toggle navigation</span>
 					  <span class="icon-bar"></span>
 					  <span class="icon-bar"></span>
 					  <span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand"  href="javascript:void(0)" ng-click="showBookMarks()" >Bookmarks</a>
-					<a class="navbar-brand"  href="javascript:void(0)" ><strong>Risk Management Portal</strong></a>
+					<a class="navbar-brand"  href="javascript:void(0)" ><strong>Risk Management Information Portal</strong></a>
 				  </div>
 				  <div class="navbar-collapse collapse">
+					
 					<ul class="nav navbar-nav navbar-right">
 					  <li class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ravi Teja<span class="caret"></span></a>
@@ -86,6 +183,19 @@
 						</div>
 						<button type="submit" class="btn btn-default" id="GblSearchBtn" >Search</button>
 					  </form>
+					<ul class="nav navbar-nav navbar-right">
+					  <li class="dropdown">
+						<a href="" class="dropdown-toggle  " data-toggle="dropdown" role="button" aria-expanded="false">
+							<span class="badge" >4</span><span class="glyphicon glyphicon-bell" style="color:red;" ></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+						  <li><a href="#">View all notifications </a></li>
+						  <li><a href="#">User: Daniel Shanks ICRS </a></li>
+						  <li><a href="#">VResponse to RES MTH in ICRS </a></li>
+						  
+						</ul>
+					  </li>
+					</ul>
 				  </div><!--/.nav-collapse -->
 				</div>
 			 </div>
@@ -93,8 +203,8 @@
 	 </div>
 	 <div class="row row-offcanvas row-offcanvas-left"   ng-controller="SideMenuCtrl" >
         <!-- sidebar -->
-        <div class="col-md-1 sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
-            <ul class="nav navbar-inverse" style="min-height:750px !important;" >
+        <div class=" col-md-1  col-sm-1  sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
+            <ul class="nav navbar-inverse" style="min-height:1200px !important;" >
               <li><a href=""  data-target="#sub1" class="cls_highLevel "  > High Lvl Cat 1</a>
                 <ul class="nav cls_childItems " id="sub1" >
                   <li><a href="#">item 1</a></li>
@@ -133,7 +243,7 @@
 			
         </div>
         <!-- main area -->
-        <div class="col-md-11 ">
+        <div class="col-md-11 col-sm-11">
 			<div class="row" ng-controller="BookMarkCtrl" id="divBookMarkPage" style="position:absolute !important;width:100% !important; z-index:999;background-color:#fff!important" >
 				<div class="modal fade" id="test" >
 				  <div class="modal-dialog">
@@ -161,18 +271,18 @@
 					</div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
-				<div class="col-md-3" ng-repeat="bookmarkGrp in data.bookmarkItems" >
+				<div class="col-md-3 col-sm-3" ng-repeat="bookmarkGrp in data.bookmarkItems" >
 					<div class="panel panel-primary">
 					  <div class="panel-heading">
 							<div class="row" >
-								<div class="col-md-4" >
+								<div class="col-md-4 col-sm-4" >
 									<h3 class="panel-title" ng-show="!bookmarkGrp.edit" ng-click="editGroupName($index,true)" >{{bookmarkGrp.BmGroupName}}</h3>
 									<input type="text"  class="form-control" ng-model="bookmarkGrp.BmGroupName" ng-show="bookmarkGrp.edit" ng-blur="editGroupName($index,false)"  ng-mouseout="editGroupName($index,false)" >
 								</div>
-								<div class="col-md-offset-2 col-md-2" >
+								<div class="col-md-offset-2  col-sm-offset-2 col-md-2  col-sm-2 " >
 									<button type="button" class="btn btn-xs btn-default" ng-click="addLink($index)">Add Link</button>
 								</div>
-								<div class="col-md-2" >
+								<div class=" col-md-2  col-sm-2 " >
 									<button ng-show="bookmarkGrp.remove" type="button" class="btn btn-xs btn-default" ng-click="deleteGroup($index)" >Delete Group</button>
 									<button ng-show="bookmarkGrp.confirm" type="button" class="btn btn-xs btn-danger" ng-click="deleteGroup($index)" >Confirm</button>
 								</div>
@@ -182,14 +292,14 @@
 						<ul class="list-group">
 						  <li ng-repeat="bookmarkGrpItem in bookmarkGrp.grpItems"  class="list-group-item list-group-item-success" style="cursor: pointer !important" >
 							<div class="row" >
-								<div class="col-md-7" >
+								<div class="col-md-7 col-sm-7" >
 									<label style="cursor: pointer !important" ng-click="openURL(bookmarkGrpItem.url)" >{{bookmarkGrpItem.name}}</label>
 								</div>
-								<div class="col-md-3" >
+								<div class="col-md-3 col-sm-3 " >
 									<button ng-show="bookmarkGrpItem.remove" type="button" class="btn btn-xs btn-default" ng-click="deleteLink($parent.$index,$index)" >Delete Link</button>
 									<button ng-show="bookmarkGrpItem.confirm" type="button" class="btn btn-xs btn-danger" ng-click="deleteLink($parent.$index,$index)" >Confirm</button>
 								</div>
-								<div class="col-md-1" >
+								<div class=" col-md-1  col-sm-1 " >
 									<button ng-show="bookmarkGrpItem.remove" type="button" class="btn btn-xs btn-default" ng-click="editLink($parent.$index,$index)" >Edit</button>
 								</div>
 							</div>
@@ -198,11 +308,11 @@
 					  </div>
 					</div>
 				</div>
-				<div class="col-md-3" ng-show="data.bookmarkItems.length<4"  >
+				<div class="col-md-3 col-sm-3" ng-show="data.bookmarkItems.length<4"  >
 					<div class="panel panel-primary">
 					  <div class="panel-heading">
 							<div class="row" >
-								<div class="col-md-12" >
+								<div class="col-md-12 col-md-12" >
 									<h3 class="panel-title" >Add New Group Here</h3>
 								</div>
 							</div>
@@ -241,7 +351,7 @@
 								<br>
 								<div class="clearfix"></div>									
 								<div class="clearfix"></div>						
-								<div class="col-sm-2">
+								<div class="col-sm-2 col-sm-2">
 									<div class="widget">
 										<a href="#" class="display-block bg-success innerAll text-center text-white"><i class="icon-desktop-play fa-3x"></i></a>
 										<div class="text-center innerAll">
@@ -250,7 +360,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-2">
+								<div class="col-sm-2 col-md-2">
 									<div class="widget">
 										<a href="#" class="display-block bg-lightred innerAll text-center text-white"><i class="icon-ship-wheel fa-3x"></i></a>
 										<div class="text-center innerAll">
@@ -261,7 +371,7 @@
 									</div>
 								</div>
 								
-								<div class="col-sm-2">
+								<div class="col-sm-2 col-md-2 ">
 									<div class="widget">
 										<a href="#" class="display-block bg-gray border-bottom innerAll text-center"><i class="icon-race-flag-fill fa-3x"></i></a>
 										<div class="text-center innerAll">
@@ -270,7 +380,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-2">
+								<div class="col-sm-2 col-md-2 ">
 									<div class="widget">
 										<a href="#" class="display-block bg-purple innerAll text-center text-white"><i class=" icon-store-front fa-3x"></i></a>
 										<div class="text-center innerAll">
@@ -279,7 +389,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-2">
+								<div class="col-sm-2 col-md-2 ">
 									<div class="widget">
 										<a href="#" class="display-block bg-mustard innerAll text-center text-white"><i class="icon-scale-2 fa-3x"></i></a>
 										<div class="text-center innerAll">
@@ -298,21 +408,21 @@
 							<div id="tabAccount" class="tab-pane widget-body-regular">
 							<div class="widget">
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="col-sm-4 col-md-4">
 											<div class="innerAll text-center">
 												<h4 class="text-primary ">Risk Systems</h4>
 												<p class="margin-none">ICRS, RWA, Risk Analyst, LMS, GMART, MRF etc.</p>
 												<p><a href="">learn more</a></p>
 											</div>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-4 col-md-4">
 											<div class="innerAll text-center">
 												<h4 class="text-primary ">Risk Metrics</h4>
 												<p class="margin-none">PD, LGD, RWA, Economic Capital etc.</p>
 												<p><a href="">learn more</a></p>
 											</div>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-4 col-md-4">
 											<div class="innerAll text-center">
 												<h4 class="text-primary ">Key Data Elements</h4>
 												<p class="margin-none">PD, LGD, RWA, Economic Capital etc.</p>
@@ -345,7 +455,7 @@
 				</div>
 			</div>
 			<div class="row" style="height:250px;display:none" >
-				<div class="col-md-12 ">
+				<div class="col-md-12 col-sm1-2 ">
 					<!-- Tabs -->
 					<ul class="nav nav-tabs" id="tabs">
 						<li class="active" ><a href="#highLevelCat1" data-toggle="tab"><span class="glyphicon glyphicon-file" ></span>High Level Category 1</a></li>
@@ -379,140 +489,112 @@
 				</div>
 			</div><!--/.row-->
 			<div class="row" id="recentlyViewed"   >
-				<div class="col-md-12 " >
+				<div class="col-md-12 col-sm-12" >
 						  <!-- Table -->
 						  <div class="row" >
-							<div class="col-md-6" >
+							<div class="col-md-6 col-sm-6" >
 									<h4 class="innerTB margin-none icon-refresh-heart text-primary"><i></i>&nbsp; Most Viewed</h4>
 										<table class="table table-hover" >
-											<thead class="bg-success" >
-												<th width="70%" >
-													Report Name
-												</th>
-												<th width="10%" >
-													System
-												</th>
-												<th width="10%" >
-													Reviews
-												</th>
-												<th width="10%" >
-													Likes
-												</th>
-											<thead>
 											<tbody>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
-													<td class="center">ICRS</td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>
-													<td class="center"><span class="text-small"><i class="icon-thumbs-up-fill fa-1x"></i>45</span></td>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
 												</tr>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
-													<td class="center">ICRS </td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>						
-													<td class="center"><span class="text-small text"><i class="icon-thumbs-up-fill fa-1x"></i>100</span></td>							
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
 												</tr>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">BALANCE DETAIL by REL MTH - AFTER</a></td>
-													<td class="center">ICRS </td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>
-													<td class="center"><span class="text-small text"><i class="icon-thumbs-up-fill fa-1x"></i>75</span></td>							
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
 												</tr>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">LOANS AND LEASES OUTSTANDING - AFTER</a></td>
-													<td class="center">ICRS </td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>
-													<td class="center"><span class="text-small text"><i class="icon-thumbs-up-fill fa-1x"></i>90</span></td>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;"  ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
 												</tr>
 											</tbody>
 										</table>
 										<div class="list-group" style="display:none">
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star"></span>
+											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 											<button class="btn btn-link btn-group-lg" >Risk analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-primary">Sharepoint</span>
-											<span class="glyphicon glyphicon-star-empty"></span>
+											<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
 											<button class="btn btn-link btn-group-lg" >Admin access request</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-warning">Dashboard</span>
-											<span class="glyphicon glyphicon-star"></span>
+											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 											<button class="btn btn-link btn-group-lg" >Daily Analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star"></span>
+											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 											<button class="btn btn-link btn-group-lg" >Data analytics</button>
 										  </a>
 										</div>
 								
 							</div>
-							<div class="col-md-6" >
-									<h4 class="innerTB  table-header icon-refresh-heart text-warning"><i></i>&nbsp; Recommended</h4>
+							<div class="col-md-6 col-sm-6" >
+									<h4 class="innerTB  table-header icon-refresh-heart text-warning" style="visibility:hidden" ><i></i>&nbsp; Recommended</h4>
 										<table class="table table-hover" >
-											<thead class="bg-purple" >
-												<th width="70%" >
-													Report Name
-												</th>
-												<th width="10%" >
-													System
-												</th>
-												<th width="10%" >
-													Reviews
-												</th>
-												<th width="10%" >
-													Likes
-												</th>
-											<thead>
 											<tbody>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
-													<td class="center">ICRS</td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>
-													<td class="center"><span class="text-small"><i class="icon-thumbs-up-fill fa-1x"></i>45</span></td>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
 												</tr>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
-													<td class="center">ICRS </td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>						
-													<td class="center"><span class="text-small text"><i class="icon-thumbs-up-fill fa-1x"></i>100</span></td>							
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
 												</tr>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">BALANCE DETAIL by REL MTH - AFTER</a></td>
-													<td class="center">ICRS </td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>
-													<td class="center"><span class="text-small text"><i class="icon-thumbs-up-fill fa-1x"></i>75</span></td>							
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
 												</tr>
-												<tr>
-													<td class="left"><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">LOANS AND LEASES OUTSTANDING - AFTER</a></td>
-													<td class="center">ICRS </td>
-													<td class="center"><span class="text-small"><i class="icon-comment-fill-2 fa-1x"></i> 45</span></td>
-													<td class="center"><span class="text-small text"><i class="icon-thumbs-up-fill fa-1x"></i>90</span></td>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;"  ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
+												</tr>
+												<tr title="Open Link" >
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
 												</tr>
 											</tbody>
 										</table>
 										<div class="list-group" style="display:none">
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star"></span>
+											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 											<button class="btn btn-link btn-group-lg" >Risk analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-primary">Sharepoint</span>
-											<span class="glyphicon glyphicon-star-empty"></span>
+											<span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span>
 											<button class="btn btn-link btn-group-lg" >Admin access request</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-warning">Dashboard</span>
-											<span class="glyphicon glyphicon-star"></span>
+											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 											<button class="btn btn-link btn-group-lg" >Daily Analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star"></span>
+											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 											<button class="btn btn-link btn-group-lg" >Data analytics</button>
 										  </a>
 										</div>
@@ -523,11 +605,11 @@
 			
 			</div><!--/.row-->
 			<div class="row"  >
-				<div class="col-md-12"  class="cls_searchResults"  >
+				<div class="col-md-12 col-sm-12"  class="cls_searchResults"  >
 					<div class="row" id="searchMenu" style="display:none" >
-						<div class="col-md-12" >
+						<div class="col-md-12 col-sm-12" >
 							<div class="row"  >
-								<div class="col-md-12" >
+								<div class="col-md-12 col-sm-12" >
 									<button class="btn btn-default cls_search_btn" type="button" data-target=".cls_all" >
 									  All <span class="badge">14</span>
 									</button>
@@ -543,26 +625,26 @@
 								</div>
 							</div>
 							<div class="row"  >
-								<div class="col-md-12" >
+								<div class="col-md-12 col-sm-12" >
 									<h2>Search Results</h2>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row"   id="searchAll" style="margin-top:15px;display:none"  >
-						<div class="col-md-12" >
+						<div class="col-md-12 col-sm-12" >
 							<table>
 								<tr class="cls_all cls_rep"  >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> Lorem ipsum dolor si Report </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -571,14 +653,14 @@
 								<tr class="cls_all cls_db" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-warning">Dashboard</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> est proin, auctor duis tellus  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -587,14 +669,14 @@
 								<tr class="cls_all cls_db" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-warning">Dashboard</span>
-												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -603,14 +685,14 @@
 								<tr class="cls_all cls_sp" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -619,14 +701,14 @@
 								<tr class="cls_all cls_rep" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -635,14 +717,14 @@
 								<tr class="cls_all cls_db" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct 1</h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -651,14 +733,14 @@
 								<tr class="cls_all cls_sp" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> mus, vulputate est proin, auctor 1</h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -667,14 +749,14 @@
 								<tr class="cls_all cls_db" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> Lorem ipsum dolor si Report </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -683,14 +765,14 @@
 								<tr class="cls_all cls_rep" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> est proin, auctor duis tellus  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -699,14 +781,14 @@
 								<tr class="cls_all cls_rep" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -715,14 +797,14 @@
 								<tr class="cls_all cls_db" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -731,14 +813,14 @@
 								<tr class="cls_all cls_sp" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -747,14 +829,14 @@
 								<tr class="cls_all cls_rep" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct 1</h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -763,14 +845,14 @@
 								<tr class="cls_all cls_db" >
 									<td>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> mus, vulputate est proin, auctor 1</h4></button>
 											</div>
 										</div>
 										<div class="row"  >
-											<div class="col-md-12" >
+											<div class="col-md-12 col-sm-12" >
 												<p> <strong>Description : </strong>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in <a class="btn btn-link" style="color:#D2691E !important" >Read More</a></p>
 											</div>
 										</div>
@@ -781,13 +863,62 @@
 					</div>
 				</div>
 			</div>
+			<div class="row" ng-controller="chatController"  >
+				<div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9" >
+					<div class="row"  id="chatWindow" >
+						<div class="col-md-12 col-sm-12" >
+							<div class="panel panel-default">
+							  <!-- Default panel contents -->
+							  <div class="panel-heading">
+								 <div class="row" >
+									 <div class="col-md-12 col-sm-12" style="color:#663300">
+										<button ng-show="!data.maximize" type="button" class="pull-left" ng-click="showHideChat(false)" ><span class="glyphicon glyphicon-plus-sign" ></span></button>
+										<button ng-show="data.maximize" type="button" class="pull-left" ng-click="showHideChat(true)"  ><span class="glyphicon glyphicon-minus-sign" ></span></button>
+										<strong><span class="glyphicon glyphicon-comment" style="color:#663300;margin-left:10px;"></span> Customer service chat</strong>
+										<span class="badge"  style="color:skyblue" >1</span>
+										
+									 </div>
+								 </div>
+									
+								</div>
+								<div class="panel-body" ng-show="data.maximize" style="min-height:400px;" >
+									<div class="row" >
+										<div class="col-md-12 col-sm-12 " style="height:250px;overflow:auto;border:1px solid #000;" >
+											<div class="row" >
+												<div class="" style="margin-top:10px;" class="col-md-8 col-sm-8" >
+													<span class="well" style="width:70% !important" >
+														<strong>User 1 : </strong> Hi
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row" >
+										<div class="col-md-9 col-sm-9 "  >
+											<textarea  style="width:100%;height:150px;margin-top:10px;" ></textarea>
+										</div>
+										<div class="col-md-3 col-sm-3 text-center" style="padding:10px" >
+											<button class="btn btn-primary btn-lg"  >Send</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="row" >
-				<div class="col-md-12" >
+				<div class="col-md-12 col-sm-12" >
 					<div ng-view></div>
 				</div>
 			</div>
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
+	<div class="footer navbar navbar-inverse" style="position:fixed!important;bottom:0px !important;margin-bottom:0px !important;width:100%" >
+		<div class="container">
+			<p class="text-muted text-center" style="padding-top:12px;" ><strong>&#169; 2012 - 2014 <u><a style="cursor:pointer" >MUFG Union Bank</a></u> - All Rights Reserved. <u><a style="cursor:pointer" >Risk Management Information Portal</a></u></strong></p>
+		</div>
+	</div>
  </div>
 </body>
 </html>
