@@ -19,4 +19,12 @@ rmipControllers.controller('MainMenuCtrl', ['$scope', '$http','$rootScope',
 		$($(this).attr("data-target")).show();
 	});
 	
+	$("#li_feedback").on("click",function(){
+		$("#feedBack_frm").modal('show');
+	});
+	$("#btn_submit_fb").on("click",function(){
+		$("#feedBack_frm").modal('hide');
+		setTimeout(function(){$("#feedBack_msg").modal('show');},400);
+	});
+	
 }]);
