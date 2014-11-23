@@ -16,12 +16,10 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 		$scope.showBookMarkNew=function(){
 			$('#test1').modal('show');
 		}
-		
 		$scope.createFolder=function(){
 			$('#test1').modal('hide');
 			$('#test2').modal('show');
 		}
-	
 		$.ajax({url:"data/bookmarks.json",
 			success:function(result){
 				for(var i=0;i<result.length;i++){
