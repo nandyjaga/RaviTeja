@@ -9,7 +9,12 @@ rmipControllers.controller('SideMenuCtrl', ['$scope', '$http','$rootScope',
 	 $(".cls_childItems").hide();
 	 
 	 $("#openChat").on("click",function(evt){
-		window.open("chat1.html",'Chat','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400');
+		window.open("chat1.html",'Chat','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=400');
 	 });
+	 $("#openChatAdmin").on("click",function(evt){
+		window.open("chat2.html",'Chat','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=700');
+	 });
+	 
+	 
 	 
 }]);

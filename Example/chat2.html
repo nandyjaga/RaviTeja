@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en" ng-app="rmip">
+<head>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="lib/bootstrap/assets/css/glyphicons_filetypes.css">
+  <link rel="stylesheet" href="lib/bootstrap/assets/css/glyphicons_regular.css">
+  <link rel="stylesheet" href="lib/bootstrap/assets/css/glyphicons_social.css">
+  <link rel="stylesheet" href="lib/bootstrap/css/custom.css">
+  <link rel="stylesheet" href="lib/bootstrap/css/css/picto.css">
+  
+	 
+  <script src="lib/html5shiv.js"></script>
+  <script src="lib/respond.min.js"></script>
+  
+  <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+  <script src="lib/jquery/jquery-ui.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="lib/angular/angular-route.js "></script>
+  <script src="lib/angular/angular-sanitize.js "></script>
+  <script src="js/app.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/MainMenuCtrl.js"></script>
+  <script src="js/SideMenuCtrl.js"></script>
+  <script src="js/BookMarkCtrl.js"></script>
+  <script src="js/chatController.js"></script>
+ 	 <!--[if lte IE 8]>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]-->
+</head>
+<body>
+	<div class="row" >
+		<div class="col-md-12 col-xs-12 col-sm-12" >
+			<table class="table table-bordered table-hover">
+				<thead>
+					<th width="15%" class="text-center btn-default "  >
+						Sl. No
+					</th>
+					<th  width="55%" class="text-center btn-default "  >
+						Name
+					</th>
+					<th  width="15%" class="text-center btn-default "  >
+						Status
+					</th>
+					<th  width="15%" class="text-center btn-default "  >
+						Chat
+					</th>
+				</thead>
+				<tbody>
+					<tr class="success" >
+						<td>
+						   1
+						</td>
+						<td>
+						   Vishal
+						</td>
+						<td>
+						   Pending
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-success btn-sm cls_chat_btn">Chat</button>
+						</td>
+					</tr>
+					<tr class="success" >
+						<td>
+						   2
+						</td>
+						<td>
+						   Rico
+						</td>
+						<td>
+						   Pending
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-success btn-sm cls_chat_btn">Chat</button>
+						</td>
+					</tr>
+					<tr class="danger" >
+						<td>
+						   3
+						</td>
+						<td>
+						   James
+						</td>
+						<td>
+						   Completed
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-danger btn-sm">Remove</button>
+						</td>
+					</tr>
+					<tr class="danger" >
+						<td>
+						   4
+						</td>
+						<td>
+						   Linda
+						</td>
+						<td>
+						   Completed
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-danger btn-sm">Remove</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   6
+						</td>
+						<td>
+						   Raghu
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   7
+						</td>
+						<td>
+						   Srinivas
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   8
+						</td>
+						<td>
+						   Madhu
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   9
+						</td>
+						<td>
+						   Jason
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   10
+						</td>
+						<td>
+						   Raghu
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="success" >
+						<td>
+						   1
+						</td>
+						<td>
+						   Vishal
+						</td>
+						<td>
+						   Pending
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-success btn-sm cls_chat_btn">Chat</button>
+						</td>
+					</tr>
+					<tr class="success" >
+						<td>
+						   2
+						</td>
+						<td>
+						   Rico
+						</td>
+						<td>
+						   Pending
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-success btn-sm">Chat</button>
+						</td>
+					</tr>
+					<tr class="danger" >
+						<td>
+						   3
+						</td>
+						<td>
+						   James
+						</td>
+						<td>
+						   Completed
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-danger btn-sm">Remove</button>
+						</td>
+					</tr>
+					<tr class="danger" >
+						<td>
+						   4
+						</td>
+						<td>
+						   Linda
+						</td>
+						<td>
+						   Completed
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-danger btn-sm">Remove</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   6
+						</td>
+						<td>
+						   Raghu
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   7
+						</td>
+						<td>
+						   Srinivas
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   8
+						</td>
+						<td>
+						   Madhu
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   9
+						</td>
+						<td>
+						   Jason
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+					<tr class="active" >
+						<td>
+						   10
+						</td>
+						<td>
+						   Raghu
+						</td>
+						<td>
+						   In progress
+						</td>
+						<td class="text-center" >
+						   <button class="btb btn-warning btn-sm ">Close</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script>
+	$(".cls_chat_btn").on("click",function(){
+		window.open("chat1.html",'Chat','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=400');
+	})
+</script>
+</html>
