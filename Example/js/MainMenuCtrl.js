@@ -12,6 +12,7 @@ rmipControllers.controller('MainMenuCtrl', ['$scope', '$http','$rootScope',
 		$("#highLevelMenyDB").hide();
 		$("#searchAll").show();
 		$("#searchMenu").show();
+		$("#view_portal_rep").hide();
 		$(".cls_all").show();
 	});
 	$(".cls_search_btn").on("click",function(){
@@ -26,5 +27,21 @@ rmipControllers.controller('MainMenuCtrl', ['$scope', '$http','$rootScope',
 		$("#feedBack_frm").modal('hide');
 		setTimeout(function(){$("#feedBack_msg").modal('show');},400);
 	});
+	
+	$("#li_portalReports").on("click",function(){
+		$("#recentlyViewed").hide();
+		$("#highLevelMenyDB").hide();
+		$("#searchAll").hide();
+		$("#searchMenu").hide();
+		$(".cls_all").hide();
+		$("#view_portal_rep").show();
+	});
+	
+	
+	 $(function () {
+                $('#datetimepicker1').datetimepicker();
+				$('#datetimepicker2').datetimepicker();
+            });
+	
 	
 }]);

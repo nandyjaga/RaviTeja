@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="lib/bootstrap/assets/css/glyphicons_social.css">
   <link rel="stylesheet" href="lib/bootstrap/css/custom.css">
   <link rel="stylesheet" href="lib/bootstrap/css/css/picto.css">
+  <link rel="stylesheet" href="lib/bootstrap-datetimepicker.min.css">
   
 	 
   <script src="lib/html5shiv.js"></script>
@@ -19,6 +20,8 @@
   <script src="lib/jquery/jquery-1.11.1.min.js"></script>
   <script src="lib/jquery/jquery-ui.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/moment.js"></script>
+  <script src="lib/bootstrap-datetimepicker.js"></script>
   
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-animate.js"></script>
@@ -174,7 +177,7 @@
 						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ravi Teja<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 						  <li><a href="#">News and communication</a></li>
-						  <li><a href="#">Portal Reports</a></li>
+						  <li id="li_portalReports" ><a href="javascript:void(0)">Portal Reports</a></li>
 						</ul>
 					  </li>
 					</ul>
@@ -870,7 +873,72 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" ng-controller="chatController"  >
+			<div class="row"  >
+				<div class="col-md-8 col-xs-8  col-sm-8 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"  id="view_portal_rep" style="margin-top:15px;display:none"  >
+					<div class="row"  >
+						<div class="col-md-12 col-xs-12  col-sm-12" >
+							<div class="row"  >
+								<div class="col-md-12 col-xs-12  col-sm-12" >
+									<h2>Portal Reports</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row"   id="searchAll"  >
+						<div class="col-md-12 col-xs-12  col-sm-12" >
+						<form role="form">
+						  <div class="form-group">
+							<div class="row" >
+								<div class="col-md-2 col-xs-2 col-sm-2 text-right">
+									<label for="cmb_report_type" >Report Type : </label>
+								</div>
+								<div class="col-md-4 col-xs-4 col-sm-4 ">
+									<select class="form-control pull-left" id="cmb_report_type" >
+									<option value="" >--Select Report Type--</option>
+									  <option value="1" > Report 1</option>
+									  <option value="2" > Report 2</option>
+									  <option value="3" > Report 3</option>
+									  <option value="4" > Report 4</option>
+									  <option value="5" > Report 5</option>
+									</select>
+								</div>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<div class="row" >
+								<div class="col-md-2 col-xs-2 col-sm-2 text-right">
+									<label for="txt_dt_to" >Date Period To :</label>
+								</div>
+								<div class="col-md-3 col-xs-3 col-sm-3 ">
+									<div class='input-group date' id='datetimepicker1'>
+										<input type='text' class="form-control" id="txt_dt_to" />
+										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-2 col-sm-2 text-right">
+									<label for="txt_dt_frm" >Date Period From :</label>
+								</div>
+								<div class="col-md-3 col-xs-3 col-sm-3 ">
+									<div class='input-group date' id='datetimepicker2'>
+										<input type='text' class="form-control" id="txt_dt_frm" />
+										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+									</div>
+								</div>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<div class="row" >
+								<div class="col-md-2 col-xs-2 col-sm-2 col-md-offset-5 col-sm-offset-5 col-xs-offset-5">
+									<button type="submit" class="btn btn-primary">Excute</button>
+								</div>
+							</div>
+						  </div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-controller="chatController" style="display:none"  >
 				<div class="col-md-3 col-xs-3   col-sm-3 col-md-offset-9 col-sm-offset-9" >
 					<div class="row"  id="chatWindow" >
 						<div class="col-md-12 col-xs-12  col-sm-12" >
@@ -923,7 +991,7 @@
     </div><!--/.row-->
 	<div class="footer navbar navbar-inverse" style="position:fixed!important;bottom:0px !important;margin-bottom:0px !important;width:100%" >
 		<div class="container">
-			<p class="text-muted text-center" style="padding-top:12px;" ><strong>&#169; 2012 - 2014 <u><a style="cursor:pointer" >MUFG Union Bank</a></u> - All Rights Reserved. <u><a style="cursor:pointer" >Risk Management Information Portal</a></u></strong></p>
+			<p class="text-muted text-center" style="padding-top:12px;" ><strong>&#169; 2012 - 2014 <u><a style="cursor:pointer" id="li_faq" >FAQ</a></u>  <u><a style="cursor:pointer" >MUFG Union Bank</a></u> - All Rights Reserved. <u><a style="cursor:pointer" >Risk Management Information Portal</a></u>  <u><a style="cursor:pointer" id="a_contact_us" >Contact Us</a></u></strong></p>
 		</div>
 	</div>
 	
@@ -968,6 +1036,227 @@
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	<div class="modal fade" id="contact_us" >
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		  </div>
+		  <div class="modal-body">
+			<table class="table table-bordered ">
+				<tbody>
+					<thead>
+						<th width="60%" >
+						   Person name
+						</th>
+						<th width="20%" >
+						   Phone number
+						</th>
+						<th width="20%" >
+						   Email
+						</th>
+					</thead>
+					<tr class="success" >
+						<td colspan="3">
+							Group name : <strong>Group 1</strong>
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Ramesh 
+						</td>
+						<td >
+							458545545
+						</td>
+						<td >
+							ramesh@xyz.com
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Kumar 
+						</td>
+						<td >
+							324242432
+						</td>
+						<td >
+							Kumar@xyz.com
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Vishal 
+						</td>
+						<td >
+							45543534342
+						</td>
+						<td >
+							vishal@xyz.com
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Madhu 
+						</td>
+						<td >
+							3424324234
+						</td>
+						<td >
+							madhu@xyz.com
+						</td>
+					</tr>
+					<tr class="success"  >
+						<td colspan="3">
+							Group name : <strong>Group 2</strong>
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Ramesh 
+						</td>
+						<td >
+							458545545
+						</td>
+						<td >
+							ramesh@xyz.com
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Kumar 
+						</td>
+						<td >
+							324242432
+						</td>
+						<td >
+							Kumar@xyz.com
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Vishal 
+						</td>
+						<td >
+							45543534342
+						</td>
+						<td >
+							vishal@xyz.com
+						</td>
+					</tr>
+					<tr  >
+						<td >
+							Madhu 
+						</td>
+						<td >
+							3424324234
+						</td>
+						<td >
+							madhu@xyz.com
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" id="div_faq" >
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4>FAQ</h4>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		  </div>
+		  <div class="modal-body">
+			<ul  class="list-inline" >
+				<ul class="list-group">
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 1</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+							<ul class="list-group">
+							  <li class="list-group-item" style="cursor:pointer" ><a>Dapibus ac facilisis in</a></li>
+							  <li class="list-group-item" style="cursor:pointer" ><a>Morbi leo risus</a></li>
+							  <li class="list-group-item" style="cursor:pointer" ><a>Porta ac consectetur ac</a></li>
+							  <li class="list-group-item" style="cursor:pointer" ><a>Vestibulum at eros</a></li>
+							</ul>
+						</div>
+					</div>
+				  </li>
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 2</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >+</button>
+						</div>
+					</div>
+				  </li>
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 3</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >+</button>
+						</div>
+					</div>
+				  </li>
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 4</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >+</button>
+						</div>
+					</div>
+				  </li>
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 4</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >+</button>
+						</div>
+					</div>
+				  </li>
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 5</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >+</button>
+						</div>
+					</div>
+				  </li>
+				  <li class="list-group-item">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10" >
+								<h4>Topic 6</h4>
+						</div>
+						<div>
+							<button class="btn btn-sm btn-primary" >+</button>
+						</div>
+					</div>
+				  </li>
+				</ul>
+			</ul>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
 	<div class="modal fade" id="feedBack_msg" >
 	  <div class="modal-dialog">
 		<div class="modal-content">

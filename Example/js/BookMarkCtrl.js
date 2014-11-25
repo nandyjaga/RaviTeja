@@ -140,6 +140,14 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 			}
 		}
 		
+		$('#a_contact_us').on("click",function(){
+			$('#contact_us').modal('show');
+		});
+		$('#li_faq').on("click",function(){
+			$('#div_faq').modal('show');
+		});
+		
+		
 		$(document).on( "evtShowBookMark",
 			function( event,data) {
 				$scope.data.showBookMark = data.showBookMark;
