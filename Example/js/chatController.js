@@ -16,4 +16,10 @@ rmipControllers.controller('chatController', ['$scope', '$http','$rootScope',
 		},1000	);
 	$( "#chatWindow" ).draggable({ cursor: "move",opacity: 0.5  });
 	
+		$("#btn_beginChat").on("click",function(){
+			$("#qWindow").hide();
+			$("#chatWindowC").show();
+		})
+		
+	
 }]);

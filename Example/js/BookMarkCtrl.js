@@ -154,4 +154,95 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 				$("#divBookMarkPage").slideToggle();
 		});
 		$("#divBookMarkPage").hide();
+	
+		
+}]);
+
+rmipControllers.controller('FAQCtrl', ['$scope',
+  function ($scope, $http,$rootScope) {
+		$scope.data={
+			searchFAQ:"",
+			topics :[
+						{
+							topicName : "Topic 1",
+							expanded   :true,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 2",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 3",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 4",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 5",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 6",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 7",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						},
+						{
+							topicName : "Topic 8",
+							expanded   :false,
+							topicList :[
+								{ tlistVal : "Morbi leo risus" },
+								{ tlistVal : "Dapibus ac facilisis in" },
+								{ tlistVal : "Porta ac consectetur ac" },
+								{ tlistVal : "Vestibulum at eros" }
+							]
+						}
+			]
+		}
 }]);

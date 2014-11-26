@@ -1167,86 +1167,27 @@
 			<h4>FAQ</h4>
 			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 		  </div>
-		  <div class="modal-body">
+		  <div class="modal-body" ng-controller="FAQCtrl" >
 			<ul  class="list-inline" >
-				<ul class="list-group">
-				  <li class="list-group-item">
-					<div class="row">
+				<ul class="list-group" >
+				  <li class="list-group-item" > 
+					<label>Search </label><input type="text" class="form-control" ng-model="data.searchFAQ" >
+				  </li>
+				  <li class="list-group-item" ng-repeat="topic in data.topics  | filter:data.searchFAQ ">
+					<div class="row" >
 						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 1</h4>
+								<h4>{{topic.topicName}}</h4>
 						</div>
 						<div>
-							<button class="btn btn-sm btn-primary" >-</button>
+							<button class="btn btn-sm btn-primary" ng-show="topicName.expanded" ng-click="topicName.expanded=!topicName.expanded" >-</button>
+							<button class="btn btn-sm btn-primary" ng-show="!topicName.expanded" ng-click="topicName.expanded=!topicName.expanded" >+</button>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" ng-show="topicName.expanded" >
 						<div class="col-md-10 col-sm-10 col-xs-10" >
-							<ul class="list-group">
-							  <li class="list-group-item" style="cursor:pointer" ><a>Dapibus ac facilisis in</a></li>
-							  <li class="list-group-item" style="cursor:pointer" ><a>Morbi leo risus</a></li>
-							  <li class="list-group-item" style="cursor:pointer" ><a>Porta ac consectetur ac</a></li>
-							  <li class="list-group-item" style="cursor:pointer" ><a>Vestibulum at eros</a></li>
+							<ul class="list-group" >
+							  <li class="list-group-item" style="cursor:pointer"   ng-repeat="topicItem in topic.topicList  | filter:data.searchFAQ " ><a>{{topicItem.tlistVal}}</a></li>
 							</ul>
-						</div>
-					</div>
-				  </li>
-				  <li class="list-group-item">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 2</h4>
-						</div>
-						<div>
-							<button class="btn btn-sm btn-primary" >+</button>
-						</div>
-					</div>
-				  </li>
-				  <li class="list-group-item">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 3</h4>
-						</div>
-						<div>
-							<button class="btn btn-sm btn-primary" >+</button>
-						</div>
-					</div>
-				  </li>
-				  <li class="list-group-item">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 4</h4>
-						</div>
-						<div>
-							<button class="btn btn-sm btn-primary" >+</button>
-						</div>
-					</div>
-				  </li>
-				  <li class="list-group-item">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 4</h4>
-						</div>
-						<div>
-							<button class="btn btn-sm btn-primary" >+</button>
-						</div>
-					</div>
-				  </li>
-				  <li class="list-group-item">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 5</h4>
-						</div>
-						<div>
-							<button class="btn btn-sm btn-primary" >+</button>
-						</div>
-					</div>
-				  </li>
-				  <li class="list-group-item">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10" >
-								<h4>Topic 6</h4>
-						</div>
-						<div>
-							<button class="btn btn-sm btn-primary" >+</button>
 						</div>
 					</div>
 				  </li>
