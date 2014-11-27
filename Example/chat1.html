@@ -95,35 +95,34 @@
 				 </div>
 			</div>
 		</div>
-		<div class="row"  >
-			<div class="col-xs-12 col-sm-12 col-md-12" style="padding:10px !important;" >
-				<div class="row" >
-					<div class="col-xs-4 col-sm-4 col-md-4 " style="padding:10px 10px 5px 25px !important;"  >
-						<p><strong>Info : at</strong> 22:04:34 </p>
+		<div ng-controller="chatController" style="margin-top:25px;" >
+			<div class="row"  ng-repeat="chat in data.chatArray"  >
+				<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" ng-show="chat.show" >
+					<div class="alert alert-success" role="alert" >
+					  <p><span class="glyphicon glyphicon-user" aria-hidden="true" style="color:orange"></span><strong> {{chat.userName}} : </strong> {{chat.msg}}</p>
+					  <p style="color:#000000;padding-top:50px;" ><strong>Sent @ </strong><i>{{chat.dateTime}}</i></p>
 					</div>
 				</div>
-				<div class="row" >
-					<div class="col-xs-4 col-sm-4 col-md-4 well" >
-						<u>Raviteja</u> : Hi 
+				<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" ng-show="!chat.show" >
+					<div class="alert alert-warning" role="alert" >
+					  <p><span class="glyphicon glyphicon-user" aria-hidden="true" style="color:#0000FF"></span><strong> {{chat.userName}} : </strong> {{chat.msg}}</p>
+					  <p style="color:#800000;padding-top:50px;" ><strong>Sent @ </strong><i>{{chat.dateTime}}</i></p>
 					</div>
 				</div>
-				<div class="row" >
-					<div class="col-xs-4 col-sm-4 col-md-4 col-md-offset-8 col-sm-offset-8 col-xs-offset-8"  style="padding:10px 10px 0px 25px !important;"  >
-						<p><strong>Info : at</strong> 22:04:34 </p>
+			</div>
+			<div class="row"    >
+				<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" ng-show="data.status!=''" >
+					<div class="alert alert-info" role="alert" >
+					  <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><i>{{data.status}}</i></p>
 					</div>
 				</div>
-				<div class="row" style="padding:0px !important;">
-					<div class="col-xs-4 col-sm-4 col-md-4 well col-md-offset-8 col-sm-offset-8 col-xs-offset-8" style="margin-right:25px;" >
-						<u>User 1</u> : Hello
-					</div>
+			</div>
+			<div class="row" >
+				<div class="col-xs-9 col-sm-9 col-md-9 col-md-offset-1 col-xs-offset-1 col-sm-offset-1 " >
+					<textarea style="width:100%;height:250px;padding:10px;" ng-model="data.currMsg"></textarea>
 				</div>
-				<div class="row" >
-					<div class="col-xs-9 col-sm-9 col-md-9" >
-						<textarea style="width:100%;height:250px;padding:10px;" ></textarea>
-					</div>
-					<div class="col-xs-3 col-sm-3 col-md-3" >
-						<button class="btn btn-primary btn-lg">Send</button>
-					</div>
+				<div class="col-xs-2 col-sm-2 col-md-2" >
+					<button class="btn btn-primary btn-lg" ng-click="sendMsg()">Send</button>
 				</div>
 			</div>
 		</div>
