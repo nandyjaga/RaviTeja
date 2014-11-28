@@ -164,7 +164,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 			searchFAQ:"",
 			topics :[
 						{
-							topicName : "Topic 1",
+							topicName : "FAQ Category item # 1",
 							expanded   :true,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -174,7 +174,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 2",
+							topicName : "FAQ Category item # 2",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -184,7 +184,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 3",
+							topicName : "FAQ Category item # 3",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -194,7 +194,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 4",
+							topicName : "FAQ Category item # 4",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -204,7 +204,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 5",
+							topicName : "FAQ Category item # 5",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -214,7 +214,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 6",
+							topicName : "FAQ Category item # 6",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -224,7 +224,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 7",
+							topicName : "FAQ Category item # 7",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -234,7 +234,7 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						},
 						{
-							topicName : "Topic 8",
+							topicName : "FAQ Category item # 8",
 							expanded   :false,
 							topicList :[
 								{ tlistVal : "Morbi leo risus" },
@@ -244,5 +244,15 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 							]
 						}
 			]
+		}
+		
+		$scope.showBodyPanel=function(index){
+			$("#faq_panel_"+index).slideToggle();
+			$("#faq_plus_"+index).toggle();
+			$("#faq_minus_"+index).toggle();
+			
+		}
+		$scope.showParaFaq=function(parentIndex,index){
+			$("#faq_para_"+parentIndex+"_"+index).slideToggle();
 		}
 }]);
