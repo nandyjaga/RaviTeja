@@ -141,7 +141,7 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 		}
 		
 		$('#a_contact_us').on("click",function(){
-			$('#contact_us').modal('show');
+			$('#div_contactUs').modal('show');
 		});
 		$('#li_faq').on("click",function(){
 			$('#div_faq').modal('show');
