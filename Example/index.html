@@ -35,6 +35,7 @@
   <script src="js/BookMarkCtrl.js"></script>
   <script src="js/chatController.js"></script>
   <script src="js/ContactUsCtrl.js"></script>
+  <script src="js/RecentlyViewedCtrl.js"></script>
 
   	 <!--[if lte IE 8]>
       <script>
@@ -499,7 +500,83 @@
 					</div>
 				</div>
 			</div><!--/.row-->
-			<div class="row" id="recentlyViewed"   >
+			<div class="row" id="recentlyViewed"  ng-controller="RecentlyViewedCtrl" >
+				<div class="col-md-12 col-xs-12  col-sm-12" >
+					<div class="row">
+						<div class="panel panel-default widget">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-time"></span>
+								<h3 class="panel-title">
+									Most Viewed</h3>
+								<span class="label label-info">{{data.recentlyViewedList2.length+data.recentlyViewedList.length}}</span>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group" >
+								  <li class="list-group-item" > 
+									<label>Search </label><input type="text" class="form-control" ng-model="data.searchRecentlyViewed" >
+								  </li>
+								</ul>
+								<div class="row" >
+									<div class="col-xs-6 col-md-6">
+										<ul class="list-group">
+											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList | filter:data.searchRecentlyViewed"  ng-show="recentItem.showRow">
+												<div class="row" >
+													<div class="col-xs-12 col-md-12">
+														<div>
+															<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ng-show="recentItem.bookmarked" ></span>
+															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked"  ></span>
+															<a href="{{recentItem.link}}">[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
+															<div class="mic-info">
+																On:  {{recentItem.dateTime}}
+															</div>
+														</div>
+														<div class="comment-text">
+															<p><strong>Description : </strong> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a>More...</a></strong></span><span ng-show="recentItem.more"> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</span></p>
+														</div>
+														<div class="action">
+															<button type="button" class="btn btn-danger btn-xs" title="Delete" ng-click="recentItem.showRow=!recentItem.showRow">
+																<span class="glyphicon glyphicon-trash"></span>
+															</button>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="col-xs-6 col-md-">
+										<ul class="list-group">
+											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList2 | filter:data.searchRecentlyViewed " ng-show="recentItem.showRow"  >
+												<div class="row"  >
+													<div class="col-xs-12 col-md-12">
+														<div>
+															<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ng-show="recentItem.bookmarked" ></span>
+															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked"  ></span>
+															<a href="{{recentItem.link}}">[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
+															<div class="mic-info">
+																On:  {{recentItem.dateTime}}
+															</div>
+														</div>
+														<div class="comment-text">
+															<p><strong>Description : </strong> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a>More...</a></strong></span><span ng-show="recentItem.more"> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</span></p>
+														</div>
+														<div class="action">
+															<button type="button" class="btn btn-danger btn-xs" title="Delete" ng-click="recentItem.showRow=!recentItem.showRow">
+																<span class="glyphicon glyphicon-trash"></span>
+															</button>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<a href="#" class="btn btn-primary btn-sm btn-block" role="button" ng-click="loadMore()"><span class="glyphicon glyphicon-refresh"></span> More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="recentlyViewed_old"  style="display:none"  >
 				<div class="col-md-12 col-xs-12  col-sm-12" >
 						  <!-- Table -->
 						  <div class="row" >
