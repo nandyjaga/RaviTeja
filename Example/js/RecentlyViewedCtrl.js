@@ -86,5 +86,24 @@ rmipControllers.controller('RecentlyViewedCtrl', ['$scope',
 			}
 			
 		}
+		
+		$scope.IamActive=false;
+		$scope.IamActiveObj=null;
+		
+		
+		$scope.addToBookMark=function(arrayItem){
+			$scope.IamActive=true;
+			$scope.IamActiveObj=arrayItem;
+			//arrayItem.bookmarked=true;
+			$('#test1').modal('show');
+		}
+		
+		$('body').bind('commonbookmarkevt', function(e){
+			  if($scope.IamActive){
+				$scope.IamActive=false;
+				$scope.IamActiveObj.bookmarked=true;
+				//$('#test1').modal('hide');
+			  }
+		});
 
 		}]);

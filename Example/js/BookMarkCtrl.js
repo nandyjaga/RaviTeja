@@ -109,6 +109,7 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 		
 		$scope.saveLink=function(){
 		    $('#test1').modal('hide');
+			$('#test1').trigger('commonbookmarkevt');
 			return;
 			if($scope.data.linkEditDetls.id != null){
 				$scope.data.bookmarkItems[$scope.data.linkEditDetls.parentIndex].grpItems[$scope.data.linkEditDetls.linkIndex].name=$scope.data.linkEditDetls.name;
@@ -144,7 +145,8 @@ rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
 			$('#div_contactUs').modal('show');
 		});
 		$('#li_faq').on("click",function(){
-			$('#div_faq').modal('show');
+			window.open("faq_html.html",'FAQ','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=800');
+			//$('#div_faq').modal('show');
 		});
 		
 		
@@ -255,4 +257,24 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 		$scope.showParaFaq=function(parentIndex,index){
 			$("#faq_para_"+parentIndex+"_"+index).slideToggle();
 		}
+		$(".searchstar").css("cursor","pointer");
+		
+	
+		$scope.IamActive=false;
+		$scope.IamActiveObj=null;
+		
+		$('body').bind('commonbookmarkevt', function(e){
+			  if($scope.IamActive){
+				$scope.IamActive=false;
+				$($scope.IamActiveObj).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+			  }
+		});
+		
+		$(".searchstar").on("click",function(){
+			if($(this).hasClass("glyphicon-star-empty")){
+				$scope.IamActive=true;
+				$scope.IamActiveObj=this;
+				$('#test1').modal('show');
+			}
+		});
 }]);

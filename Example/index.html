@@ -524,7 +524,7 @@
 													<div class="col-xs-12 col-md-12">
 														<div>
 															<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ng-show="recentItem.bookmarked" ></span>
-															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked"  ></span>
+															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked"  ng-click="addToBookMark(recentItem)" ></span>
 															<a href="{{recentItem.link}}">[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
 															<div class="mic-info">
 																On:  {{recentItem.dateTime}}
@@ -550,7 +550,7 @@
 													<div class="col-xs-12 col-md-12">
 														<div>
 															<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ng-show="recentItem.bookmarked" ></span>
-															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked"  ></span>
+															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked" ng-click="addToBookMark(recentItem)"  ></span>
 															<a href="{{recentItem.link}}">[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
 															<div class="mic-info">
 																On:  {{recentItem.dateTime}}
@@ -727,7 +727,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;"  ></span>
 												<button type="button" class="btn btn-link"><h4> Lorem ipsum dolor si Report </h4></button>
 											</div>
 										</div>
@@ -743,7 +743,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">Dashboard</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> est proin, auctor duis tellus  </h4></button>
 											</div>
 										</div>
@@ -759,7 +759,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">Dashboard</span>
-												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -775,7 +775,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -791,7 +791,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -807,7 +807,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct 1</h4></button>
 											</div>
 										</div>
@@ -823,7 +823,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> mus, vulputate est proin, auctor 1</h4></button>
 											</div>
 										</div>
@@ -839,7 +839,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> Lorem ipsum dolor si Report </h4></button>
 											</div>
 										</div>
@@ -855,7 +855,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> est proin, auctor duis tellus  </h4></button>
 											</div>
 										</div>
@@ -871,7 +871,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -887,7 +887,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -903,7 +903,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -919,7 +919,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct 1</h4></button>
 											</div>
 										</div>
@@ -935,7 +935,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
 												<button type="button" class="btn btn-link"><h4> mus, vulputate est proin, auctor 1</h4></button>
 											</div>
 										</div>
@@ -1067,7 +1067,7 @@
 			</div>
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
-	<div class="footer navbar navbar-inverse" style="position:fixed!important;bottom:0px !important;margin-bottom:0px !important;width:100%" >
+	<div class="footer navbar navbar-inverse" style="bottom:0px !important;margin-bottom:0px !important;width:100%" >
 		<div class="container">
 			<p class="text-muted text-center" style="padding-top:12px;" ><strong>&#169; 2012 - 2014 <u><a style="cursor:pointer" >MUFG Union Bank</a></u> - All Rights Reserved. <u><a style="cursor:pointer" >Risk Management Information Portal</a></u> <u><a style="cursor:pointer" id="li_faq" >FAQ</a></u>  <u><a style="cursor:pointer" id="a_contact_us" >Contact Us</a></u></strong></p>
 		</div>
