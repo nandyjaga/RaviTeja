@@ -99,6 +99,31 @@
 						</div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
+				<div class="modal fade" id="removeBookMarkModal" >
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title">Remove Bookmark</h4>
+						  </div>
+						  <div class="modal-body">
+							<form role="form">
+							  <div class="form-group">
+								<div class="row" >
+									<div class="col-md-8 col-xs-8   col-sm-8 text-left" >
+										<label for="exampleInputEmail1">Are you sure you want to delete the bookmark ?</label>
+									</div>
+								</div>
+							  </div>
+							</form>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-primary"  ng-click="saveLink()" >Yes</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						  </div>
+						</div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
 				
 				<div class="modal fade" id="test2" >
 					  <div class="modal-dialog">
@@ -513,19 +538,46 @@
 							<div class="panel-body">
 								<ul class="list-group" >
 								  <li class="list-group-item" > 
-									<label>Search </label><input type="text" class="form-control" ng-model="data.searchRecentlyViewed" >
+									<!--div class="row" >
+										<div class="col-md-12 col-sm-12 col-xs-12" >
+											<label>Search </label>
+										</div>
+									</div-->
+									<div class="row" style="margin:15px;" >
+										<div class="col-md-1 col-sm-2 col-xs-2 text-right" >
+											<label>
+												<select class="form-control pull-left" id="cmb_report_type" ng-model="data.filterBy" >
+													<option value="" >--Filter By--</option>
+													  <option value="Type" >Type</option>
+													  <option value="Source" >Source</option>
+													  <option value="Title" >Title</option>
+													</select>
+											</label>
+										</div>
+										<div class="col-md-10 col-sm-10 col-xs-10" ng-show="data.filterBy=='Source' || data.filterBy=='Title' " >
+											<input type="text" class="form-control" ng-model="data.searchRecentlyViewed" >
+										</div>
+										<div class="col-md-10 col-sm-10 col-xs-10" ng-show="data.filterBy=='Type'" >
+											<div class="btn-group" role="group"  >
+											  <button id="btn_selected_filter" type="button" class="btn btn-primary active" ng-click="applyFilter('All')" >All</button>
+											  <button type="button" class="btn btn-primary" ng-click="applyFilter('Report')" >Report</button>
+											  <button type="button" class="btn btn-primary" ng-click="applyFilter('Dashboard')" >Dashboard</button>
+											  <button type="button" class="btn btn-primary" ng-click="applyFilter('Sharepoint')" >Sharepoint</button>
+											</div>
+										</div>
+									</div>
 								  </li>
 								</ul>
 								<div class="row" >
 									<div class="col-xs-6 col-md-6">
 										<ul class="list-group">
-											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList | filter:data.searchRecentlyViewed"  ng-show="recentItem.showRow">
+											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList | filter:data.searchRecentlyViewed"  ng-show="recentItem.linkType==data.filter || data.filter=='All'" >
 												<div class="row" >
 													<div class="col-xs-12 col-md-12">
 														<div>
-															<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ng-show="recentItem.bookmarked" ></span>
-															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked"  ng-click="addToBookMark(recentItem)" ></span>
-															<a href="{{recentItem.link}}">[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
+															<span class="glyphicon glyphicon-star" style="color:blue;cursor:pointer;" ng-show="recentItem.bookmarked" ng-click="addToBookMark(recentItem)" ></span>
+															<span class="glyphicon glyphicon-star-empty" style="color:blue;cursor:pointer;" ng-show="!recentItem.bookmarked"  ng-click="addToBookMark(recentItem)" ></span>
+															<a href="testPage.html" target="_blank" >[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
 															<div class="mic-info">
 																On:  {{recentItem.dateTime}}
 															</div>
@@ -533,11 +585,7 @@
 														<div class="comment-text">
 															<p><strong>Description : </strong> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a>More...</a></strong></span><span ng-show="recentItem.more"> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</span></p>
 														</div>
-														<div class="action">
-															<button type="button" class="btn btn-danger btn-xs" title="Delete" ng-click="recentItem.showRow=!recentItem.showRow">
-																<span class="glyphicon glyphicon-trash"></span>
-															</button>
-														</div>
+														
 													</div>
 												</div>
 											</li>
@@ -545,13 +593,13 @@
 									</div>
 									<div class="col-xs-6 col-md-">
 										<ul class="list-group">
-											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList2 | filter:data.searchRecentlyViewed " ng-show="recentItem.showRow"  >
+											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList2 | filter:data.searchRecentlyViewed " ng-show="recentItem.linkType==data.filter || data.filter=='All'"  >
 												<div class="row"  >
 													<div class="col-xs-12 col-md-12">
 														<div>
-															<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ng-show="recentItem.bookmarked" ></span>
-															<span class="glyphicon glyphicon-star-empty" style="color:#FFCC33;" ng-show="!recentItem.bookmarked" ng-click="addToBookMark(recentItem)"  ></span>
-															<a href="{{recentItem.link}}">[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
+															<span class="glyphicon glyphicon-star" style="color:blue;cursor:pointer;" ng-show="recentItem.bookmarked" ng-click="addToBookMark(recentItem)" ></span>
+															<span class="glyphicon glyphicon-star-empty" style="color:blue;cursor:pointer;" ng-show="!recentItem.bookmarked" ng-click="addToBookMark(recentItem)"  ></span>
+															<a href="testPage.html" target="_blank" >[{{recentItem.linkType}}] [{{recentItem.title}}] {{recentItem.link}}</a>
 															<div class="mic-info">
 																On:  {{recentItem.dateTime}}
 															</div>
@@ -559,18 +607,13 @@
 														<div class="comment-text">
 															<p><strong>Description : </strong> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a>More...</a></strong></span><span ng-show="recentItem.more"> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</span></p>
 														</div>
-														<div class="action">
-															<button type="button" class="btn btn-danger btn-xs" title="Delete" ng-click="recentItem.showRow=!recentItem.showRow">
-																<span class="glyphicon glyphicon-trash"></span>
-															</button>
-														</div>
 													</div>
 												</div>
 											</li>
 										</ul>
 									</div>
 								</div>
-								<a href="#" class="btn btn-primary btn-sm btn-block" role="button" ng-click="loadMore()"><span class="glyphicon glyphicon-refresh"></span> More</a>
+								<a class="btn btn-primary btn-sm btn-block" role="button" ng-click="loadMore()"><span class="glyphicon glyphicon-refresh"></span> More</a>
 							</div>
 						</div>
 					</div>
@@ -585,50 +628,50 @@
 										<table class="table table-hover" >
 											<tbody>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;"  ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;"  ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
 												</tr>
 											</tbody>
 										</table>
 										<div class="list-group" style="display:none">
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+											<span class="glyphicon glyphicon-star" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Risk analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-primary">Sharepoint</span>
-											<span class="glyphicon glyphicon-star-empty" style="color:orange;"></span>
+											<span class="glyphicon glyphicon-star-empty" style="color:blue;"></span>
 											<button class="btn btn-link btn-group-lg" >Admin access request</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-warning">Dashboard</span>
-											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+											<span class="glyphicon glyphicon-star" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Daily Analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+											<span class="glyphicon glyphicon-star" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Data analytics</button>
 										  </a>
 										</div>
@@ -639,50 +682,50 @@
 										<table class="table table-hover" >
 											<tbody>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Ad8JRYxTQiZHsE_DR38T0ig">  [Dashboard] [Pace] PDRR ACL LOAN LEVEL SUMMARY – RG</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;"  ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;"  ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=ASE9va.IQzVIqM5kdxwyfNA">  [Dashboard] [Dharma] ACL DAILY TO MONTHLY FACTOR COMPARISON</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AaP1cF1A5StGpwDAqIXkDzE">  [Report] [Analysis] BALANCE DETAIL by REL MTH - AFTER</a></td>
 												</tr>
 												<tr title="Open Link" >
-													<td class="left"><span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
+													<td class="left"><span class="glyphicon glyphicon-star" style="color:blue;" ></span><a href="https://bitdev.uboc.com/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=AYl_aQ_hSw5AqUyr2J6ye9s">  [Report] [Analysis]  LOANS AND LEASES OUTSTANDING - AFTER</a></td>
 												</tr>
 											</tbody>
 										</table>
 										<div class="list-group" style="display:none">
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+											<span class="glyphicon glyphicon-star" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Risk analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-primary">Sharepoint</span>
-											<span class="glyphicon glyphicon-star-empty" style="color:orange;" ></span>
+											<span class="glyphicon glyphicon-star-empty" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Admin access request</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-warning">Dashboard</span>
-											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+											<span class="glyphicon glyphicon-star" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Daily Analysis report</button>
 										  </a>
 										  <a href="#" class="list-group-item ">
 											<span class="label label-info">Report</span>
-											<span class="glyphicon glyphicon-star" style="color:#FFCC33;" ></span>
+											<span class="glyphicon glyphicon-star" style="color:blue;" ></span>
 											<button class="btn btn-link btn-group-lg" >Data analytics</button>
 										  </a>
 										</div>
@@ -727,7 +770,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;"  ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;"  ></span>
 												<button type="button" class="btn btn-link"><h4> Lorem ipsum dolor si Report </h4></button>
 											</div>
 										</div>
@@ -743,7 +786,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">Dashboard</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> est proin, auctor duis tellus  </h4></button>
 											</div>
 										</div>
@@ -759,7 +802,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">Dashboard</span>
-												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:blue;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -775,7 +818,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -791,7 +834,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:blue;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -807,7 +850,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct 1</h4></button>
 											</div>
 										</div>
@@ -823,7 +866,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> mus, vulputate est proin, auctor 1</h4></button>
 											</div>
 										</div>
@@ -839,7 +882,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> Lorem ipsum dolor si Report </h4></button>
 											</div>
 										</div>
@@ -855,7 +898,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> est proin, auctor duis tellus  </h4></button>
 											</div>
 										</div>
@@ -871,7 +914,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:blue;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -887,7 +930,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -903,7 +946,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-primary">Sharepoint</span>
-												<span class="glyphicon glyphicon-star-empty searchstar" style="color:orange;"></span>
+												<span class="glyphicon glyphicon-star-empty searchstar" style="color:blue;"></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct  </h4></button>
 											</div>
 										</div>
@@ -919,7 +962,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-info">Report</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> amet, ac lectus accusamus, vulputate est proin, auct 1</h4></button>
 											</div>
 										</div>
@@ -935,7 +978,7 @@
 										<div class="row"  >
 											<div class="col-md-12 col-xs-12  col-sm-12" >
 												<span class="label label-warning">dashboard</span>
-												<span class="glyphicon glyphicon-star searchstar" style="color:#FFCC33;" ></span>
+												<span class="glyphicon glyphicon-star searchstar" style="color:blue;" ></span>
 												<button type="button" class="btn btn-link"><h4> mus, vulputate est proin, auctor 1</h4></button>
 											</div>
 										</div>
