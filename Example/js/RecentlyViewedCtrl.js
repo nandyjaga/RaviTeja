@@ -210,5 +210,5 @@ rmipControllers.controller('RecentlyViewedCtrl', ['$scope',
 				}
 			  }
 		});
-
+		$('[data-toggle="tooltip"]').tooltip()
 		}]);

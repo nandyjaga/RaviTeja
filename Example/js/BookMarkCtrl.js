@@ -265,16 +265,26 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 		
 		$('body').bind('commonbookmarkevt', function(e){
 			  if($scope.IamActive){
-				$scope.IamActive=false;
-				$($scope.IamActiveObj).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+				if($(this).hasClass("glyphicon-star-empty")){
+					$scope.IamActive=false;
+					$($scope.IamActiveObj).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+				}else{
+					$scope.IamActive=false;
+					$($scope.IamActiveObj).removeClass("glyphicon-star").addClass("glyphicon-star-empty");
+					$('#removeBookMarkModal').modal('hide');
+				}
+				
 			  }
 		});
 		
 		$(".searchstar").on("click",function(){
-			if($(this).hasClass("glyphicon-star-empty")){
-				$scope.IamActive=true;
+		    	$scope.IamActive=true;
 				$scope.IamActiveObj=this;
-				$('#test1').modal('show');
-			}
+				if($(this).hasClass("glyphicon-star-empty")){
+					$('#test1').modal('show');
+				}else{
+					$('#removeBookMarkModal').modal('show');
+				}
+				
 		});
 }]);

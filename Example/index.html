@@ -57,7 +57,6 @@
 		<div class="col-md-12 col-sm-12 col-xs-12" style="padding-left:0px !important;padding-right:0px !important" ng-controller="BookMarkCtrl" >
 			<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
 				<div class="container-fluid">
-				  <div class="navbar-header">
 					<div class="modal fade" id="test1" >
 					  <div class="modal-dialog">
 						<div class="modal-content">
@@ -97,9 +96,9 @@
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 						  </div>
 						</div><!-- /.modal-content -->
-					  </div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
-				<div class="modal fade" id="removeBookMarkModal" >
+					 </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					<div class="modal fade" id="removeBookMarkModal" >
 					  <div class="modal-dialog">
 						<div class="modal-content">
 						  <div class="modal-header">
@@ -123,9 +122,8 @@
 						  </div>
 						</div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
-				
-				<div class="modal fade" id="test2" >
+					</div><!-- /.modal -->
+					<div class="modal fade" id="test2" >
 					  <div class="modal-dialog">
 						<div class="modal-content">
 						  <div class="modal-header">
@@ -152,116 +150,116 @@
 						  </div>
 						</div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
-				<div class="navbar navbar-inverse" style="margin-bottom:0px !important">
-					<div class="container-fluid">
-					  <div class="container-fluid">
-					  <div class="navbar-header">
-						<ul class="nav navbar-nav ">
-						  <li class="dropdown">
-							<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"  >Bookmarks<span class="caret"></span></a>
-							<ul class="dropdown-menu" >
-								<li ng-click="showBookMarkNew()" ><a >Add a bookmark</a></li>
-								<li>
-									<a class="trigger right-caret glyphicon glyphicon-folder-close">
-										Report ICRS
-									</a>
-									<ul class="dropdown-menu sub-menu">
-										<li><a href="#">Report 1</a></li>
-										<li><a href="#">Report 2</a></li>
+					</div><!-- /.modal -->
+					<div class="row">
+						<div class="col-md-2 col-sm-2 col-xs-2" >
+							<div class="navbar-header  " >
+								<ul class="nav navbar-nav ">
+								  <li class="dropdown">
+									<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"  >Bookmarks<span class="caret"></span></a>
+									<ul class="dropdown-menu" >
+										<li ng-click="showBookMarkNew()" ><a >Add a bookmark</a></li>
+										<li>
+											<a class="trigger right-caret glyphicon glyphicon-folder-close">
+												Report ICRS
+											</a>
+											<ul class="dropdown-menu sub-menu">
+												<li><a href="#">Report 1</a></li>
+												<li><a href="#">Report 2</a></li>
+											</ul>
+										</li>
+										<li>
+											<a class="trigger right-caret glyphicon glyphicon-folder-close"> Contacts</a>
+											<ul class="dropdown-menu sub-menu">
+												<li><a href="#">Report 3</a></li>
+												<li><a href="#">Report 4</a></li>
+											</ul>
+										</li>
+										<li><a href="#">System risk analyst</a></li>
 									</ul>
-								</li>
-								<li>
-									<a class="trigger right-caret glyphicon glyphicon-folder-close"> Contacts</a>
-									<ul class="dropdown-menu sub-menu">
-										<li><a href="#">Report 3</a></li>
-										<li><a href="#">Report 4</a></li>
-									</ul>
-								</li>
-								<li><a href="#">System risk analyst</a></li>
-							</ul>
-						  </li>
-						</ul>
-						<!--a class="navbar-brand"  href="javascript:void(0)" ng-click="showBookMarks()" >Bookmarks</a-->
-					  </div>
-					  </div><!--/.nav-collapse -->
-					</div>
-				 </div>
-				  </div>
-				  <div class="navbar-header" style="padding-left:53px;">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-					  <span class="sr-only">Toggle navigation</span>
-					  <span class="icon-bar"></span>
-					  <span class="icon-bar"></span>
-					  <span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand"  href="javascript:void(0)" ><strong>Risk Management Information Portal</strong></a>
-				  </div>
-				  <div class="navbar-collapse collapse">
-					
-					<ul class="nav navbar-nav navbar-right">
-					  <li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ravi Teja<span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-						  <li><a href="#">News and communication</a></li>
-						  <li id="li_portalReports" ><a href="javascript:void(0)">Portal Reports</a></li>
-						</ul>
-					  </li>
-					</ul>
-					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-						  <input type="text" class="form-control" placeholder="Search" value="Risk analysis" >
+								  </li>
+								</ul>
+							</div>
 						</div>
-						<button type="submit" class="btn btn-default" id="GblSearchBtn" >Search</button>
-					  </form>
-					<ul class="nav navbar-nav navbar-right">
-					  <li class="dropdown">
-						<a href="" class="dropdown-toggle  " data-toggle="dropdown" role="button" aria-expanded="false">
-							<span class="badge" >4</span><span class="glyphicon glyphicon-bell" style="color:red;" ></span>
-						</a>
-						<ul class="dropdown-menu" role="menu">
-						  <li><a href="#">View all notifications </a></li>
-						  <li><a href="#">User: Daniel Shanks ICRS </a></li>
-						  <li><a href="#">VResponse to RES MTH in ICRS </a></li>
-						  
-						</ul>
-					  </li>
-					</ul>
-				  </div><!--/.nav-collapse -->
+						<div class="col-md-10 col-sm-10 col-xs-10 " >
+							<div class="navbar-header" >
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+								  <span class="sr-only">Toggle navigation</span>
+								  <span class="icon-bar"></span>
+								  <span class="icon-bar"></span>
+								  <span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand"  href="javascript:void(0)" ><strong>Risk Management Information Portal</strong></a>
+							</div>
+							<div class="navbar-collapse collapse">
+								<ul class="nav navbar-nav navbar-right">
+								  <li class="dropdown">
+									<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ravi Teja<span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">News and communication</a></li>
+									  <li id="li_portalReports" ><a href="javascript:void(0)">Portal Reports</a></li>
+									</ul>
+								  </li>
+								</ul>
+								<form class="navbar-form navbar-right" role="search">
+									<div class="form-group">
+									  <input type="text" class="form-control" placeholder="Search" value="Risk analysis" >
+									</div>
+									<button type="submit" class="btn btn-default" id="GblSearchBtn" >Search</button>
+								</form>
+								<ul class="nav navbar-nav navbar-right">
+								  <li class="dropdown">
+									<a href="" class="dropdown-toggle  " data-toggle="dropdown" role="button" aria-expanded="false">
+										<span class="badge" >4</span><span class="glyphicon glyphicon-bell" style="color:red;" ></span>
+									</a>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">View all notifications </a></li>
+									  <li><a href="#">User: Daniel Shanks ICRS </a></li>
+									  <li><a href="#">VResponse to RES MTH in ICRS </a></li>
+									  
+									</ul>
+								  </li>
+								</ul>
+							</div><!--/.nav-collapse -->
+						</div>
+					</div>
 				</div>
-			 </div>
+			</div>
 		</div>
-	 </div>
+	</div>
+	</div>
 	 <div class="row row-offcanvas row-offcanvas-left"   ng-controller="SideMenuCtrl" >
         <!-- sidebar -->
-        <div class=" col-md-1  col-sm-1  sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
+        <div class=" col-md-2  col-sm-2  sidebar-offcanvas" id="sidebar" role="navigation" style="padding-right:0px !important;border-top:0px;" >
             <ul class="nav navbar-inverse" style="min-height:1200px !important;" >
-              <li><a href="javascript:void(0)"  data-target="#sub1" class="cls_highLevel "  > High Lvl Cat 1</a>
-                <ul class="nav cls_childItems " id="sub1" >
-                  <li><a href="#">item 1</a></li>
-                  <li><a href="#">item 2</a></li>
-                  <li><a href="#">item 3</a></li>
+              <li><a href="javascript:void(0)"  data-target="#sub1" class="cls_highLevel "  > Risk Dashboards</a>
+                <ul class="nav cls_childItems " id="sub1" style="margin-left:7px;" >
+                  <li><a  href="testPage.html" target="_blank"  >ICRS</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >CHub</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >Dharma</a></li>
+				  <li><a  href="testPage.html" target="_blank"  >Pace</a></li>
+				  <li><a  href="testPage.html" target="_blank"  >Market</a></li>
                 </ul>
               </li>
-			  <li><a href="javascript:void(0)"  data-target="#sub2" class="cls_highLevel"  > High Lvl Cat 2</a>
+			  <li><a href="javascript:void(0)"  data-target="#sub2" class="cls_highLevel"  > Risk Systems</a>
                 <ul class="nav cls_childItems" id="sub2">
-                  <li><a href="#">item 1</a></li>
-                  <li><a href="#">item 2</a></li>
-                  <li><a href="#">item 3</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 1</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 2</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 3</a></li>
                 </ul>
               </li>
-			  <li><a href="javascript:void(0)"  data-target="#sub3" class="cls_highLevel"  > High Lvl Cat 3</a>
+			  <li><a href="javascript:void(0)"  data-target="#sub3" class="cls_highLevel"  > Risk Reports</a>
                 <ul class="nav cls_childItems" id="sub3">
-                  <li><a href="#">item 1</a></li>
-                  <li><a href="#">item 2</a></li>
-                  <li><a href="#">item 3</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 1</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 2</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 3</a></li>
                 </ul>
               </li>
-			  <li><a href="javascript:void(0)"  data-target="#sub4" class="cls_highLevel "  > High Lvl Cat 4</a>
+			  <li><a href="javascript:void(0)"  data-target="#sub4" class="cls_highLevel "  >Policies & Manuals</a>
                 <ul class="nav cls_childItems" id="sub4">
-                  <li><a href="#">item 1</a></li>
-                  <li><a href="#">item 2</a></li>
-                  <li><a href="#">item 3</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 1</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 2</a></li>
+                  <li><a  href="testPage.html" target="_blank"  >item 3</a></li>
                 </ul>
               </li>
 			  <li style="margin-top:15%;" >
@@ -280,7 +278,7 @@
 			
         </div>
         <!-- main area -->
-        <div class="col-md-11 col-xs-11  col-sm-11">
+        <div class="col-md-10 col-xs-10  col-sm-10">
 			<div class="row" ng-controller="BookMarkCtrl" id="divBookMarkPage" style="position:absolute !important;width:100% !important; z-index:999;background-color:#fff!important" >
 				<div class="modal fade" id="test" >
 				  <div class="modal-dialog">
@@ -372,10 +370,10 @@
 						<!-- Tabs Heading -->
 						<div class="widget-head">
 							<ul>
-								<li class="active"><a class="glyphicons snowflake" href="#tabAll" data-toggle="tab"><i></i><span>Risk Dashboards</span></a></li>
-								<li><a class="glyphicons user" href="#tabAccount" data-toggle="tab"><i></i><span>Risk Systems</span></a></li>
-								<li><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab"><i></i><span>Risk Reports</span></a></li>
-								<li><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab"><i></i><span>Key Data Elements</span></a></li>
+								<li class="active" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons snowflake" href="#tabAll" data-toggle="tab" ><i></i><span >Risk Dashboards</span></a></li>
+								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons user" href="#tabAccount" data-toggle="tab"><i></i><span>Risk Systems</span></a></li>
+								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab"><i></i><span>Risk Reports</span></a></li>
+								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab"><i></i><span>Policies & Manuals</span></a></li>
 							</ul>
 						</div>
 						<!-- // Tabs Heading END -->
@@ -390,8 +388,8 @@
 								<div class="clearfix"></div>						
 								<div class="col-sm-2 col-sm-2">
 									<div class="widget">
-										<a href="#" class="display-block bg-success innerAll text-center text-white"><i class="icon-desktop-play fa-3x"></i></a>
-										<div class="text-center innerAll">
+										<a  href="testPage.html" target="_blank" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right"  class="display-block bg-success innerAll text-center text-white"><i class="icon-desktop-play fa-3x"></i></a>
+										<div class="text-center ">
 											<a href=""><span class="btn-sm btn-inverse" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right">ICRS</span></a>
 											<div class="clearfix"></div>
 										</div>
@@ -399,8 +397,8 @@
 								</div>
 								<div class="col-sm-2 col-md-2 col-xs-2  ">
 									<div class="widget">
-										<a href="#" class="display-block bg-lightred innerAll text-center text-white"><i class="icon-ship-wheel fa-3x"></i></a>
-										<div class="text-center innerAll">
+										<a  href="testPage.html" target="_blank" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right"  class="display-block bg-lightred innerAll text-center text-white"><i class="icon-ship-wheel fa-3x"></i></a>
+										<div class="text-center ">
 											<a "http:="" corphub.btmna.com="" screens="" gcacp.aspx"=""><span class="btn-sm btn-inverse" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right">CHub</span></a>
 											
 											<div class="clearfix"></div>
@@ -410,8 +408,8 @@
 								
 								<div class="col-sm-2 col-md-2 col-xs-2   ">
 									<div class="widget">
-										<a href="#" class="display-block bg-gray border-bottom innerAll text-center"><i class="icon-race-flag-fill fa-3x"></i></a>
-										<div class="text-center innerAll">
+										<a  href="testPage.html" target="_blank"  data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right"  class="display-block bg-gray border-bottom innerAll text-center"><i class="icon-race-flag-fill fa-3x"></i></a>
+										<div class="text-center ">
 											<a href="http://lahq-gmg-dhaprd:8080/Dharma/mrmHome.action"><span class="btn-sm btn-inverse" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right">Dharma</span></a>
 											<div class="clearfix"></div>
 										</div>
@@ -419,8 +417,8 @@
 								</div>
 								<div class="col-sm-2 col-md-2 col-xs-2   ">
 									<div class="widget">
-										<a href="#" class="display-block bg-purple innerAll text-center text-white"><i class=" icon-store-front fa-3x"></i></a>
-										<div class="text-center innerAll">
+										<a  href="testPage.html" target="_blank"  data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" class="display-block bg-purple innerAll text-center text-white"><i class=" icon-store-front fa-3x"></i></a>
+										<div class="text-center ">
 											<a href="http://10.97.172.63/pace/Group_DB.aspx"><span class="btn-sm btn-inverse" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right">Pace</span></a>
 											<div class="clearfix"></div>
 										</div>
@@ -428,8 +426,8 @@
 								</div>
 								<div class="col-sm-2 col-md-2 col-xs-2   ">
 									<div class="widget">
-										<a href="#" class="display-block bg-mustard innerAll text-center text-white"><i class="icon-scale-2 fa-3x"></i></a>
-										<div class="text-center innerAll">
+										<a  href="testPage.html" target="_blank" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right"  class="display-block bg-mustard innerAll text-center text-white"><i class="icon-scale-2 fa-3x"></i></a>
+										<div class="text-center ">
 											<a href=""><span class="btn-sm btn-inverse" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right">Market</span></a>
 											<div class="clearfix"></div>
 										</div>
@@ -461,7 +459,7 @@
 										</div>
 										<div class="col-sm-4 col-md-4 col-xs-4  ">
 											<div class="innerAll text-center">
-												<h4 class="text-primary ">Key Data Elements</h4>
+												<h4 class="text-primary ">Policies & Manuals</h4>
 												<p class="margin-none">PD, LGD, RWA, Economic Capital etc.</p>
 												<p><a href="">learn more</a></p>
 											</div>
@@ -544,7 +542,7 @@
 										</div>
 									</div-->
 									<div class="row" style="margin:15px;" >
-										<div class="col-md-1 col-sm-2 col-xs-2 text-right" >
+										<div class="col-md-3 col-sm-3 col-xs-3" >
 											<label>
 												<select class="form-control pull-left" id="cmb_report_type" ng-model="data.filterBy" >
 													<option value="" >--Filter By--</option>
