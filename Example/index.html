@@ -36,6 +36,7 @@
   <script src="js/chatController.js"></script>
   <script src="js/ContactUsCtrl.js"></script>
   <script src="js/RecentlyViewedCtrl.js"></script>
+  <script src="js/NewsCtrl.js"></script>
 
   	 <!--[if lte IE 8]>
       <script>
@@ -359,9 +360,109 @@
 				</div>
 						
 			</div>
-			<div class="row"  >
+			<div class="row"  ng-controller="NewsCtrl" >
+				<div class="modal fade" id="customNews" >
+				  <div class="modal-dialog" style="width:900px;" >
+					<div class="modal-content">
+					  <div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">News/Updates Customization</h4>
+					  </div>
+					  <div class="modal-body">
+						<ul class="list-group">
+							<table class="table table-hover" >
+								<thead>
+									<th width="20%" class="text-center" >
+										Label
+									</th>
+									<th width="65%" class="text-left" >
+										Message
+									</th>
+									<th width="15%" class="text-center" >
+										Show/Hide
+									</th>
+								</thead>
+								<tbody>
+									<tr  ng-repeat="newsItem in data.news.newsList | filter:data.news.filter" ng-dblclick="newsItem.showInputs=!newsItem.showInputs" >
+										<td >
+											<span ng-show="!newsItem.showInputs" >{{newsItem.label}}</span>
+											<form role="form"  ng-show="newsItem.showInputs" >
+											  <div class="form-group">
+												<input type="text" class="form-control" placeholder="Label" ng-model="newsItem.label" >
+											  </div>
+											</form>
+										</td>
+										<td >
+											<span ng-show="!newsItem.showInputs" >{{newsItem.msg}}</span>
+											<form role="form" ng-show="newsItem.showInputs" >
+											  <div class="form-group">
+												<input type="text" class="form-control" ng-model="newsItem.msg" >
+											  </div>
+											</form>
+										</td>
+										<td class="text-center" >
+											<form role="form">
+											  <div class="checkbox">
+												<label>
+												  <input type="checkbox"  ng-model="newsItem.show" >
+												</label>
+											  </div>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<li class="list-group-item"  style="display:none"  >
+								<div class="row" >
+									<div class="col-xs-4 col-md-4 col-sm-4 ">
+										<form role="form">
+										  <div class="form-group">
+											<label for="exampleInputEmail1">Label</label>
+											<input type="text" class="form-control" placeholder="Label" ng-model="newsItem.label" >
+										  </div>
+										</form>
+									</div>
+									<div class="col-xs- col-md-7 col-sm-7 ">
+										<form role="form">
+										  <div class="form-group">
+											<label for="exampleInputPassword1">Message</label>
+											<input type="text" class="form-control" ng-model="newsItem.msg" >
+										  </div>
+										</form>
+									</div>
+									<div class="col-xs-1 col-md-1 col-sm-1 ">
+										<form role="form">
+										  <div class="form-group">
+											<label for="exampleInputPassword1">Show/Hide</label>
+											<input type="checkbox" class="form-control" ng-model="newsItem.show" >
+										  </div>
+										</form>
+									</div>
+								</div>
+							</li>
+						</ul>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-primary"  ng-click="addNewsUpdate()" >Add</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+					  </div>
+					</div><!-- /.modal-content -->
+				 </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+					
 				<div class="alert alert-warning" role="alert">
-					<marquee><strong>News1 :</strong> News/Updates will come here</marquee>
+					<div class="row">
+						<div class="col-sm-2 col-md-2 col-xs-2" >
+							<input type="button" value="Customise" class="btn btn-warning" id="btn_news_customise" >
+						</div>
+						<div class="col-sm-10 col-md-10 col-xs-10" >
+							<marquee >
+								<span ng-repeat="newsItem in data.news.newsList | filter:data.news.filter"  style="margin-left:250px" ng-show="newsItem.show">
+									<strong>{{newsItem.label}} : </strong>{{newsItem.msg}}
+								</span>
+							</marquee>
+						</div>
+					</div>
 				</div>
 			</div><!--/.row-->
 			<div class="row">
@@ -369,11 +470,11 @@
 						<div class="widget widget-tabs widget-tabs-double-2 widget-tabs-gray">
 						<!-- Tabs Heading -->
 						<div class="widget-head">
-							<ul>
-								<li class="active" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons snowflake" href="#tabAll" data-toggle="tab" ><i></i><span >Risk Dashboards</span></a></li>
-								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons user" href="#tabAccount" data-toggle="tab"><i></i><span>Risk Systems</span></a></li>
-								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab"><i></i><span>Risk Reports</span></a></li>
-								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab"><i></i><span>Policies & Manuals</span></a></li>
+							<ul  >
+								<li class="active" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons snowflake" href="#tabAll" data-toggle="tab"  style="color:#000000 !important;"><i></i><span >Risk Dashboards</span></a></li>
+								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons user" href="#tabAccount" data-toggle="tab" style="color:#000000 !important;" ><i></i><span>Risk Systems</span></a></li>
+								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab" style="color:#000000 !important;"><i></i><span>Risk Reports</span></a></li>
+								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab" style="color:#000000 !important;"><i></i><span>Policies & Manuals</span></a></li>
 							</ul>
 						</div>
 						<!-- // Tabs Heading END -->
@@ -523,14 +624,13 @@
 					</div>
 				</div>
 			</div><!--/.row-->
-			<div class="row" id="recentlyViewed"  ng-controller="RecentlyViewedCtrl" >
+			<div class="row" id="recentlyViewed"  ng-controller="RecentlyViewedCtrl" style="margin:10px !important;" >
 				<div class="col-md-12 col-xs-12  col-sm-12" >
 					<div class="row">
 						<div class="panel panel-default widget">
 							<div class="panel-heading">
 								<span class="glyphicon glyphicon-time"></span>
-								<h3 class="panel-title">
-									Most Viewed</h3>
+								<h3 class="panel-title"><strong> Most Viewed</strong></h3>
 								<span class="label label-info">{{data.recentlyViewedList2.length+data.recentlyViewedList.length}}</span>
 							</div>
 							<div class="panel-body">

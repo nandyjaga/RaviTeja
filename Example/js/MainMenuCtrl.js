@@ -8,6 +8,13 @@ rmipControllers.controller('MainMenuCtrl', ['$scope', '$http','$rootScope',
 		$(document).trigger( "evtShowBookMark", [ {showBookMark:$scope.data.showBookMark} ] )
 	}
 	$("#GblSearchBtn").on("click",function(){
+		//Created ajax sample here
+		$.ajax({url:"data/searchData.JSON",success:function(result){
+			alert(JSON.stringify(result));
+		},error:function(error){
+			alert("Error Occured" + JSON.stringify(error));
+		}});
+		
 		$("#recentlyViewed").hide();
 		$("#highLevelMenyDB").hide();
 		$("#searchAll").show();

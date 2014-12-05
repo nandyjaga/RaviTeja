@@ -1,6 +1,21 @@
 rmipControllers.controller('BookMarkCtrl', ['$scope','$rootScope', '$http',
   function ($scope, $http,$rootScope) {
 		$scope.data={
+			news:{
+				filter:"",
+				newsList :[
+					{
+						label : "Title 1",
+						msg : "Message Goes here",
+						show : true
+					},
+					{
+						label : "Title 1",
+						msg : "Message Goes here",
+						show : true
+					}
+				]
+			},
 			showBookMark : false,
 			bookmarkItems :[],
 			linkEditDetls :{
@@ -286,5 +301,8 @@ rmipControllers.controller('FAQCtrl', ['$scope',
 					$('#removeBookMarkModal').modal('show');
 				}
 				
+		});
+		$("#btn_news_customise").on("click",function(){
+			$('#customNews').modal('show');
 		});
 }]);
