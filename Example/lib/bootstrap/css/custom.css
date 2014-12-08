@@ -927,7 +927,23 @@ text-shadow:none;
 }
 
 .widget.widget-tabs-gray>.widget-head ul li.active,.widget.widget-tabs-gray>.widget-head ul li.active i:before {
-color:#444!important;
+color:#22C222!important;
+text-shadow:none;
+}
+
+.widget.widget-tabs-gray>.widget-head ul li.cls_user,.widget.widget-tabs-gray>.widget-head ul li.cls_user i:before {
+color:#FEBE29!important;
+text-shadow:none;
+}
+
+.widget.widget-tabs-gray>.widget-head ul li.cls_reports,.widget.widget-tabs-gray>.widget-head ul li.cls_reports i:before {
+color:#F1685E!important;
+text-shadow:none;
+}
+
+
+.widget.widget-tabs-gray>.widget-head ul li.cls_policies,.widget.widget-tabs-gray>.widget-head ul li.cls_policies i:before {
+color:#3E5E9A!important;
 text-shadow:none;
 }
 

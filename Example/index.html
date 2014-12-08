@@ -471,10 +471,10 @@
 						<!-- Tabs Heading -->
 						<div class="widget-head">
 							<ul  >
-								<li class="active" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons snowflake" href="#tabAll" data-toggle="tab"  style="color:#000000 !important;"><i></i><span >Risk Dashboards</span></a></li>
-								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons user" href="#tabAccount" data-toggle="tab" style="color:#000000 !important;" ><i></i><span>Risk Systems</span></a></li>
-								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab" style="color:#000000 !important;"><i></i><span>Risk Reports</span></a></li>
-								<li data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab" style="color:#000000 !important;"><i></i><span>Policies & Manuals</span></a></li>
+								<li class="active" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons snowflake" href="#tabAll" data-toggle="tab"  style="color:#22C222 !important;"><i></i><span >Risk Dashboards</span></a></li>
+								<li class="cls_user" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons user" href="#tabAccount" data-toggle="tab" style="color:#FEBE29 !important;" ><i></i><span>Risk Systems</span></a></li>
+								<li class="cls_reports" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab" style="color:#F1685E !important;"><i></i><span>Risk Reports</span></a></li>
+								<li class="cls_policies" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right" ><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab" style="color:#3E5E9A !important;"><i></i><span>Policies & Manuals</span></a></li>
 							</ul>
 						</div>
 						<!-- // Tabs Heading END -->
@@ -628,7 +628,7 @@
 				<div class="col-md-12 col-xs-12  col-sm-12" >
 					<div class="row">
 						<div class="panel panel-default widget">
-							<div class="panel-heading">
+							<div class="panel-heading" style="color:midnightblue">
 								<span class="glyphicon glyphicon-time"></span>
 								<h3 class="panel-title"><strong> Most Viewed</strong></h3>
 								<span class="label label-info">{{data.recentlyViewedList2.length+data.recentlyViewedList.length}}</span>
@@ -652,10 +652,10 @@
 													</select>
 											</label>
 										</div>
-										<div class="col-md-10 col-sm-10 col-xs-10" ng-show="data.filterBy=='Source' || data.filterBy=='Title' " >
+										<div class="col-md-9 col-sm-9 col-xs-9" ng-show="data.filterBy=='Source' || data.filterBy=='Title' " >
 											<input type="text" class="form-control" ng-model="data.searchRecentlyViewed" >
 										</div>
-										<div class="col-md-10 col-sm-10 col-xs-10" ng-show="data.filterBy=='Type'" >
+										<div class="col-md-9 col-sm-9 col-xs-9" ng-show="data.filterBy=='Type'" >
 											<div class="btn-group" role="group"  >
 											  <button id="btn_selected_filter" type="button" class="btn btn-primary active" ng-click="applyFilter('All')" >All</button>
 											  <button type="button" class="btn btn-primary" ng-click="applyFilter('Report')" >Report</button>
@@ -681,7 +681,7 @@
 															</div>
 														</div>
 														<div class="comment-text">
-															<p><strong>Description : </strong> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a>More...</a></strong></span><span ng-show="recentItem.more"> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</span></p>
+															<p><strong>Description : </strong><i> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,</i>  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a style="color:#FA7704">More...</a></strong></span><span ng-show="recentItem.more"><i> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</i></span></p>
 														</div>
 														
 													</div>
@@ -703,7 +703,7 @@
 															</div>
 														</div>
 														<div class="comment-text">
-															<p><strong>Description : </strong> Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus,  <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a>More...</a></strong></span><span ng-show="recentItem.more"> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</span></p>
+															<p><strong>Description : </strong> <i>Lorem ipsum dolor sit amet, ac lectus accusamus, vulputate est proin, auctor duis tellus, </i> <span ng-show="!recentItem.more" ng-click="recentItem.more=!recentItem.more" style="cursor:pointer" ><strong><a style="color:#FA7704">More...</a></strong></span><span ng-show="recentItem.more"><i> wisi dis sed varius feugiat donec facilisis. Felis nonummy. Feugiat in gravida turpis eleifend, quam non vel elit a pellentesque in, magna donec aliquet leo wisi vel platea, cras morbi felis pharetra nunc lobortis, aliquam justo amet venenatis ultricies eget lectus. Aenean diam, mollis velit metus feugiat quisque dignissim odio. Sed aliquam consectetuer dis ante. Est ut eu nam. Magna pretium vitae tellus a ipsum sed, vehicula metus vel, lectus suspendisse est, luctus morbi. Ipsum condimentum eget, consectetuer volutpat mauris eget, porttitor et quis fusce consectetuer nisl tellus, id in</i></span></p>
 														</div>
 													</div>
 												</div>
