@@ -2820,3 +2820,19 @@ content:"\f122";
 .widget .action { margin-top:5px; }
 .widget .comment-text { font-size: 12px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+
+.cls_highLevel {
+	color:#fff !important
+}
+
+#li_feedback > a{
+	color:#fff !important;
+}
+#li_feedback > a :hover{
+	color:#000 !important;
+}
+
+.cls_highLevel:hover{
+	color:#000 !important
+}
