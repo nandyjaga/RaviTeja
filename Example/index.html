@@ -36,6 +36,7 @@
   <script src="js/chatController.js"></script>
   <script src="js/ContactUsCtrl.js"></script>
   <script src="js/RecentlyViewedCtrl.js"></script>
+  <script src="js/SearchResultsCtrl.js"></script>
   <script src="js/NewsCtrl.js"></script>
 
   	 <!--[if lte IE 8]>
@@ -689,7 +690,7 @@
 											</li>
 										</ul>
 									</div>
-									<div class="col-xs-6 col-md-">
+									<div class="col-xs-6 col-md-6 col-sm-6">
 										<ul class="list-group">
 											<li class="list-group-item" ng-repeat="recentItem in data.recentlyViewedList2 | filter:data.searchRecentlyViewed " ng-show="recentItem.linkType==data.filter || data.filter=='All'"  >
 												<div class="row"  >
@@ -833,14 +834,14 @@
 				</div>
 			
 			</div><!--/.row-->
-			<div class="row"  >
+			<div class="row"  ng-controller="SearchResultsCtrl">
 				<div class="col-md-12 col-xs-12  col-sm-12"  class="cls_searchResults"  >
 					<div class="row" id="searchMenu" style="display:none" >
 						<div class="col-md-12 col-xs-12  col-sm-12" >
 							<div class="row"  >
 								<div class="col-md-12 col-xs-12  col-sm-12" >
 									<button class="btn btn-default cls_search_btn" type="button" data-target=".cls_all" >
-									  All <span class="badge">14</span>
+									  All <span class="badge">14{{data.searchResults}}</span>
 									</button>
 									<button class="btn btn-info cls_search_btn" type="button" 	data-target=".cls_rep"  >
 									  Reports <span class="badge">5</span>

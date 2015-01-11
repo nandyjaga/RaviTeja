@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My TODOs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
+	<script src="jquery.ui.widget.js" type="text/javascript"></script>
+	<script src="jquery.iframe-transport.js" type="text/javascript"></script>
+	<script src="jquery.fileupload.js" type="text/javascript"></script>
+	
+	
+
+</head>
+<body>
+<div class="content"></div>
+
+<script type="text/template" id="artist-list-template">
+    <div class="row" >
+        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 col-md-offset-3 col-lg-offset-3 col-sm-offset-3 col-xs-offset-3 " >
+            <div class="form-group">
+                <label for="fileToUpload"><em>Select a File to Upload</em></label>
+                <form enctype="multipart/form-data" action="upload1.php" id="fileinfo" name="fileinfo" method="POST">
+                    <input type="file" name="files" id="fileToUpload"  accept="application/pdf,image/*" multiple>
+                </form>
+            </div>
+        </div>
+    </div>
+    <table class="table" >
+        <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Size</th>
+			<th>Valid File</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+		  var largeFile = false;
+		  var formatDiscard = false;
+		  var uploadValidationFailed = false;
+		  var allowedFiles={
+				  jpeg:true,
+                  tiff:true,
+                  pdf:true,
+				  png : true
+				};
+				
+		_.each(artists.models, function(artist) { %>
+		<%
+				largeFile=false;
+				formatDiscard=false;
+				
+				var L_fileTypeArr = artist.get('name').split(".");;
+				var L_extenshion = L_fileTypeArr[L_fileTypeArr.length-1];
+				if(!(L_extenshion in allowedFiles)){
+					formatDiscard=true;
+					uploadValidationFailed=true;
+				}
+				if(parseInt(artist.get('size')) >1000){
+					largeFile=true;
+					uploadValidationFailed=true;
+				}
+			%>
+			
+        <tr <%if(largeFile==true || formatDiscard==true ){%> style="color:red"  <%} %> >
+            <td><%= artist.get('name') %></td>
+            <td><%= artist.get('size') %> KB</td>
+			<td><%if(largeFile==true || formatDiscard==true ){%> Invalid  <%}else{%>Valid<%} %></td>
+            <td>
+				<%if(largeFile==true || formatDiscard==true ){%>   
+				 <div class=""><progress  value="0" max="100"></progress></div >
+				<%}else{%> 
+				  <div class="upload"><progress  class="progressbar"  value="0" max="100"></progress></div >
+				<%} %> 
+				
+			</td>
+            <td><button class="btn btn-primary" id="cancelFile" data-cid="<%=artist.cid%>" >Cancel</button></td>
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+    <%if(artists.models.length > 0 ){ %>
+    <div class="row" >
+        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-xs-offset-1 " >
+            <div class="form-group">
+                <button class="btn btn-info pull-left" id="uploadFiles" >Upload</button>
+            </div>
+        </div>
+    </div>
+    <%}%>
+</script>
+
+<script type="text/javascript">
+    var Artist = Backbone.Model.extend({
+        defaults:{},
+        initialize: function() {
+            console.log('New artist created...');
+        }
+
+    });
+    var user = new Artist();
+
+    var Artists = Backbone.Collection.extend({
+
+        model: Artist,
+
+        initialize: function() {
+            console.log('New collection initialized...');
+        }
+    });
+
+    var artistArray = [];
+    var artists = new Artists(artistArray);
+
+    var ArtistListView = Backbone.View.extend({
+        el: '.content',
+        events: {
+            'change #fileToUpload': 'filesListChanged',
+            'click #uploadFiles': 'uploadTheFiles',
+            'click #cancelFile': 'deleteUser'
+        },
+        initialize:function(){
+            this.render();
+        },
+        deleteUser: function (evt) {
+			var cid = $(evt.target).attr("data-cid");
+			artists.remove(cid);
+			this.render();
+        },
+        uploadTheFiles:function(e){
+		
+		debugger;
+		$('#fileinfo').fileupload({
+			dataType: 'json',
+			done: function (e, data) {
+				/*$.each(data.result.files, function (index, file) {
+					$('<p/>').text(file.name).appendTo(document.body);
+				});*/
+			},
+		});
+		
+			/*
+			var frmFileInfo = $("fileinfo");
+			var formData = frmFileInfo.serialize();
+			var L_fileUploadObj = document.getElementById("fileToUpload");
+			
+			$.each(L_fileUploadObj.files, function(key, value)
+			{
+				formData = formData + '&filenames[]=' + value;
+			});
+			
+			$.ajax({
+				url: 'submit.php',
+				type: 'POST',
+				data: formData,
+				cache: false,
+				dataType: 'json',
+				success: function(data, textStatus, jqXHR)
+					{
+						if(typeof data.error === 'undefined')
+						{
+							// Success so call function to process the form
+							console.log('SUCCESS: ' + data.success);
+						}
+						else
+						{
+							// Handle errors here
+							console.log('ERRORS: ' + data.error);
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown)
+					{
+						// Handle errors here
+						console.log('ERRORS: ' + textStatus);
+					},
+					complete: function()
+					{
+						// STOP LOADING SPINNER
+					}
+				});
+			
+		*/
+            /*var L_fileUploadObj = document.getElementById("fileToUpload");
+            for(var i=0;i<L_fileUploadObj.files.length;i++){
+                if(Math.round(L_fileUploadObj.files[i].size / 1024 > 600)) {
+                }
+            }*/
+			
+				/*setTimeout(
+				  function(){
+					var fd = new FormData(document.getElementById("fileinfo"));
+					fd.append("Case number","WEBUPLOAD");   //case number
+					fd.append("Merchant ID","WEBUPLOAD");   //Merchant ID
+					$.ajax({
+						url: "upload1.php",
+						type: "POST",
+						data: fd,
+						enctype: 'multipart/form-data',
+						processData: false,  // tell jQuery not to process the data
+						contentType: false  // tell jQuery not to set contentType
+					});
+					var max=100,min=0,value=0,time=30;
+					var progressbar = $('.progressbar');
+					var loading = function() {
+							value += 1;
+							addValue = progressbar.val(value);
+							$('.progress-value').html(value + '%');
+							if (value == max) {
+								clearInterval(animate);
+								
+								$('.upload').html('Uploaded')  ;
+							}
+					  };
+					  
+					  var animate = setInterval(function() {
+							loading();
+						}, time);
+					
+				  },1000
+				);*/
+			
+			
+			
+			
+        },
+        filesListChanged:function() {
+            var L_fileUploadObj = document.getElementById("fileToUpload");
+            for(var i=0;i<L_fileUploadObj.files.length;i++){
+                
+				//var fr = new FileReader();
+                //console.log("File binary: " + fr.readAsBinaryString(L_fileUploadObj.files[i]));
+				
+				var fileDetls = new Artist({
+                        id: i,
+                        name: L_fileUploadObj.files[i].name,
+                        size: Math.round(L_fileUploadObj.files[i].size / 1024),
+						fileType :L_fileUploadObj.files[i].type
+                    });
+                    artists.add(fileDetls);
+                }
+				this.render();
+				
+        },
+        render: function () {
+            var template = _.template($('#artist-list-template').html(), {artists: artists.models});
+            this.$el.html(template);
+        }
+    });
+    var artistListView = new ArtistListView();
+</script>
+
+<script>
+
+</script>
+
+</body>
+</html>
+
+
