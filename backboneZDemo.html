@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Backbone Upload Manager Sample</title>
+
+        <!-- Dependencies tyles -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="vendor/js/html5shiv.js"></script>
+        <![endif]-->
+        
+        <!-- Upload Manager style -->
+        <link href="../css/backbone.upload-manager.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div style="" id="manager-area"></div>
+        
+        <!-- Dependencies scripts -->
+        <script type="text/javascript" src="vendor/js/jquery-1.9.1.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="vendor/js/underscore-1.4.4.js"></script>
+        <script type="text/javascript" src="vendor/js/backbone-1.0.0.js"></script>
+        <script type="text/javascript" src="vendor/js/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="vendor/js/jquery.iframe-transport.js"></script>
+        <script type="text/javascript" src="vendor/js/jquery.fileupload.js"></script>
+        <script type="text/javascript" src="vendor/js/backbone.defered-view-loader.js"></script>
+        
+        <!-- Upload Manager script -->
+        <script type="text/javascript" src="../js/backbone.upload-manager.js"></script>
+        
+        <!-- Start upload manager -->
+        <script type="text/javascript">
+        $(function(){
+            // Reset the baseUrl of template manager
+            Backbone.TemplateManager.baseUrl = '{name}';
+            
+            // Create the upload manager object
+	        var uploadManager = new Backbone.UploadManager({
+	            uploadUrl: 'index2.html',
+	            templates: {
+	                main: '../templates/upload-manager.main',
+	                file: '../templates/upload-manager.file'
+	            }
+	        });
+            
+            // Render it in our div
+	        uploadManager.renderTo($('div#manager-area'));
+        });
+        </script>
+    </body>
+</html>
+
+
+<h3 class="popover-title">Upload files</h3>
+<div class="popover-content" id="file-list">
+    <div class="no-data"><em>Add files.</em></div>
+</div>
+<footer>
+    <button class="btn btn-warning pull-right" id="cancel-uploads-button"><i class="icon-cancel"></i>Cancel uploads</button>
+    <span class="btn btn-success fileinput-button" id="fileinput-button">
+        <i class="icon-plus"></i>
+        <span>Add files...</span>
+        <input id="fileupload" type="file" name="files[]" multiple="multiple">
+    </span>
+    <button class="btn btn-primary" id="start-uploads-button"><i class="icon-start"></i>Start uploads</button>
+</footer>
+
+<div class="col-md-3 col-sm-3 col-xs-3 col-lg-3 " ><span class="name"><%= name %></span></div>
+<div class="col-md-3 col-sm-3 col-xs-3 col-lg-3 "  >
+    <span class="size"><%= displaySize(size) %></span>
+    <div class="progress hidden">
+        <div class="progress-label"></div>
+        <div class="bar"></div>
+    </div>
+    <span class="message hidden"></span>
+</div>
+<div class="span3" >
+    <button class="btn btn-warning btn-small" id="btn-cancel"><i class="icon-remove"></i>Cancel</button>
+    <button class="btn btn-small" id="btn-clear">Clear</button>
+</div>
